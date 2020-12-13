@@ -48,4 +48,11 @@
         "entities": [],
         "responses":  ["The updated list of phones have been cleared..."]
     }
+    ,
+    {
+        "entryPoint": "reserve",
+        "patterns": ["reserve", "buy", "information","choose","see"],
+        "entities": [],
+        "responses": ["Please wait..."]
+    }
 ]

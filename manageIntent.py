@@ -51,7 +51,11 @@ class ManageIntent:
                     break
         return intent
 
-
+    def check_number(self, cleanlist):
+        for word in cleanlist:
+            if word.isnumeric():
+                return int(word)
+        return -1
 
     def get_response(self, cleanList):
         intent1 = self.extractIntent(cleanList)
@@ -77,6 +81,12 @@ class ManageIntent:
         elif intent1 == 'restart':
             manage = MP.ManagePhones()
             manage.reinit()
+        elif intent1 == 'reserve':
+            manage = MP.ManagePhones()
+            id = self.check_number(cleanList)
+            if id < 0:
+                id = None
+            manage.reserve_phone(id)
 
 
 '''
@@ -84,6 +94,7 @@ TESTING
 '''
 # print(">>start")
 # demo = ManageIntent()
+# print(demo.check_number(["me","hello","055"]))
 # print(">>start")
 # inp = ["filter","os"]
 # print(">>start")

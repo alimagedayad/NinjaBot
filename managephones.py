@@ -200,13 +200,13 @@ class ManagePhones:
 
     
     def reserve_phone(self, id = None):
-        if id == None:
+        if id == None or id > len(ManagePhones.list_phones):
             id = int(input("Which Phone do you want to check "))
-        
+
         if not (self.check_if_stock(id)):
             print("I'm sorry this phone is not in stock. Please try again at a later date!")
             return None
-        
+        print("Here are the details of the phone you requested...")
         self.check_phone_info(id)
         reserve = input("Do you want to reserve this phone? ")
         while reserve != True:
@@ -232,10 +232,9 @@ class ManagePhones:
             phone_number = input("Please enter you phone number so that we could contact you \n")
 
             reserve = input("Are you sure about this information? ")
-            while reserve != True:
-                if reserve == 'yes' or reserve == 'y' or reserve == '1':
-                    reserve = True
-                    last_check = True
+            if reserve == 'yes' or reserve == 'y' or reserve == '1':
+                reserve = True
+                last_check = True
             
         self.remove_stock(id)
         order_num = id*1000 + ManagePhones.list_phones[id-1].stock +1
