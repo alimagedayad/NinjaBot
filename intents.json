@@ -1,0 +1,51 @@
+[
+    {
+        "entryPoint": "recommendation",
+        "patterns": ["recommend", "proposit", "suggest", "ali"],
+        "entities": [],
+        "responses": ["please wait while we recommend you a phone..."]
+    },
+    {
+        "entryPoint": "locationInfo",
+        "patterns": ["locat", "branch", "district", "neighbourhood", "part", "posit", "region", "whereabout","where"],
+        "entities": ["dxb", "cai", "gva"],
+        "responses": ["Our current branches are in Cairo, Alexandria and Sharm-al-Sheikh"]
+    },
+    {
+        "entryPoint": "hours",
+        "patterns": ["hour", "place", "close", "work","when","time"],
+        "entities": [],
+        "responses": ["Our stores are open during the weekdays from 9 am to 8 pm"]
+    },
+    {
+        "entryPoint": "greeting",
+        "patterns": ["hello", "hi", "hey", "howdy", "greet", "salut", "bonjour", "hola", "ahlan","fine"],
+        "entities": [],
+        "responses": ["Hey!", "Howdy!", "How are you doin'", "Greetings Heroes!","Hello!!"]
+    },
+    {
+        "entryPoint": "filter",
+        "patterns": ["filter", "proposition"],
+        "entities": ["price", "os"],
+        "responses": ["please wait while the filtering is processing..."]
+    },
+    {
+        "entryPoint": "sort",
+        "patterns": ["arrang", "catalogu", "categor", "assort"],
+        "entities": ["price"],
+        "responses":  ["please wait while the sorting is processing..."]
+    },
+    {
+        "entryPoint": "browse",
+        "patterns": ["display", "show", "view","available"],
+        "entities": [],
+        "responses":  ["please wait..."]
+    },
+
+    {
+        "entryPoint": "restart",
+        "patterns": ["clear"],
+        "entities": [],
+        "responses":  ["The updated list of phones have been cleared..."]
+    }
+]

@@ -1,0 +1,69 @@
+@startuml
+class ChatBot {
+#name
++init_bot()
++start_bot()
++bot_end()
+}
+
+class Phone {
+#id
+#name
+#brand
+#os
+#price
+#size
+#color
+#recommend_score
++get_phone(phone_num)
++get_number_of_phones()
+}
+
+class ManageIntent {
+#intentObj
++extractIntent()
++check_second_intent()
++get_response()
+}
+
+class Intent {
+#db
++set_intent()
++get_all()
+}
+
+class ManagePhones {
++print_list()
++print_name()
++reinit()
++filter()
++filter_by_os()
++filter_by_price()
++sort()
++sort_price()
++recommend_phone()
+}
+
+class TextInput {
+#text
++change_input()
++remove_punc()
++text_initiation()
+}
+
+class dbHandle {
+#memory
++read(json_file)
+}
+
+
+
+
+ManagePhones -- ManageIntent
+ManageIntent -- Intent
+ManagePhones -- Phone
+Phone ..> dbHandle
+Intent ..> dbHandle
+ChatBot -- TextInput
+TextInput -- ManageIntent
+@enduml
