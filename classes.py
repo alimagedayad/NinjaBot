@@ -5,8 +5,8 @@ class Phone:
     "Common base class for all phones"
     db = dbHandler()
     db.read("db.json")
-    # youssef was here
-    def __init__(self, id_num=None, name=None, brand=None, os=None, price=None, size=None, color=None, recommend_score= None):
+
+    def __init__(self, id_num=None, name=None, brand=None, os=None, price=None, size=None, color=None, recommend_score= None, stock=None):
         self.id = id_num
         self.name = name
         self.brand = brand
@@ -15,6 +15,7 @@ class Phone:
         self.size = size
         self.color = color
         self.recommend_score = recommend_score
+        self.stock = stock
 
     def get_phone(self,phone_num):
         self.id = Phone.db.memory[phone_num]['id']
@@ -25,12 +26,23 @@ class Phone:
         self.size = Phone.db.memory[phone_num]['size']
         self.color = Phone.db.memory[phone_num]['color']
         self.recommend_score =Phone.db.memory[phone_num]['recommend']
+        self.stock = Phone.db.memory[phone_num]['stock']
 
         return self
     
     def get_number_of_phones(self):
         return len(Phone.db.memory)
     
+
+    def order_phone(self,text):
+        order = dbHandler()
+        order.write_order(text)
+
+
+    def update_db(self,new_list):
+        update = dbHandler()
+        update.write_json("db.json", new_list)
+
 
 """
 TESTING

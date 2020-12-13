@@ -145,11 +145,124 @@ class ManagePhones:
                 """)
 
 
+
+    def check_phone_info(self, id):
+        stock = "not in stock"
+        if self.check_if_stock(id):
+            stock = "In stock"
+        
+        for phone in ManagePhones.list_phones:
+            # print(type(phone))
+            if phone.id == id:
+                print(f"""
+                ++++++++++++++++
+                id: {phone.id}
+                name:{phone.name}
+                brand:{phone.brand}
+                os:{phone.os}
+                price:{phone.price}
+                size:{phone.size}
+                color:{phone.color}
+                rating: {phone.recommend_score}/10
+                stock: {stock}
+                ++++++++++++++++
+                """)
+                return True
+        print("This phone is not available")
+        return False
+
+    def check_if_stock(self, id):
+        for phone in ManagePhones.list_phones:
+            # print(type(phone))
+            if phone.id == id:
+                if phone.stock > 0:
+                    return True
+                else:
+                    return False
+        return False
+
+    def remove_stock(self,id):
+        for phone in ManagePhones.list_phones:
+            # print(type(phone))
+            if phone.id == id:
+                phone.stock -=1
+        ManagePhones.current_list = ManagePhones.list_phones[:]
+
+    def update_list(self):
+        ls = []
+        for phone in ManagePhones.list_phones:
+            d = {"id": phone.id, "name": phone.name, "brand": phone.brand, "os": phone.os, "price": phone.price, "size": phone.size, "color": phone.color, "recommend" : phone.recommend_score, "stock":phone.stock}
+            ls.append(d)
+        # print(ls[0]['name'])
+        ph = Phone()
+        ph.update_db(ls)
+
+
+    
+    def reserve_phone(self, id = None):
+        if id == None:
+            id = int(input("Which Phone do you want to check "))
+        
+        if not (self.check_if_stock(id)):
+            print("I'm sorry this phone is not in stock. Please try again at a later date!")
+            return None
+        
+        self.check_phone_info(id)
+        reserve = input("Do you want to reserve this phone? ")
+        while reserve != True:
+            if reserve == 'yes' or reserve == 'y' or reserve == '1':
+                reserve = True
+            elif reserve == 'no' or reserve == 'n' or reserve == '0':
+                return None
+            else:
+                print("I didn't understand that please write yes if you wish to reserve a phone and no if you don't")
+        
+        print("You're in luck, The phone is currently in stock!! However we don't have a delivery system so you will have to come pick your device up and pay in one of our branches")
+        last_check = False
+        while last_check == False:
+            branch = input("Which branch do you want to pick up your device from? We currently have branches in Cairo, Alexandria and Sharm el Sheikh \n")
+            branch = branch.lower()
+            while not (branch in "cairo alexandria sharm el sheikh"):
+                branch = input("This branch is not available. Please try again. If you have decided not to reserve a phone write 'exit' \n")
+                branch = branch.lower()
+                if branch == 'exit':
+                    return None
+            
+            name = input("Who would be picking up the order? Make sure you write their name right; they will be asked for identification. \n")
+            phone_number = input("Please enter you phone number so that we could contact you \n")
+
+            reserve = input("Are you sure about this information? ")
+            while reserve != True:
+                if reserve == 'yes' or reserve == 'y' or reserve == '1':
+                    reserve = True
+                    last_check = True
+            
+        self.remove_stock(id)
+        order_num = id*1000 + ManagePhones.list_phones[id-1].stock +1
+        print(f"Phone is reserved!! Your order number is {order_num} Please come to the branch as asked to pick up and pay for it. If you don't come in the next 48 hours The phone will no longer be reserved!")
+        ph = Phone()
+        ph.order_phone(f"order number: {order_num}: \t Phone id: {id}\t info: {name}\t {phone_number} \t branch: {branch}\n")
+        self.update_list()
+
+
+        
+        
+
+            
+
+
+
+#reserve phone: check phone info -> choose to reserve -> choose branch -> stock -1 in list -> update current list -> add to text number with name and branch -> change db.json with information
+
+
+
 '''
 TESTING
 '''
     
-# mp = ManagePhones()
+mp = ManagePhones()
+mp.update_list()
+# mp.reserve_phone()
 # # mp.print_name()
 # mp.filter('os')
 # mp.recommend_phone()
