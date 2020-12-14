@@ -16,9 +16,9 @@ class dbHandler:
         order.close()
 
     def write_json(self, json_file, new_list):
-        data = json.dumps(new_list)
+        data = json.dumps(new_list, indent=4, separators=(',', ': '))
         with open(json_file, "w") as outfile: 
-            outfile.write(data) 
+            outfile.write(data)
 
 
 """
@@ -26,3 +26,4 @@ Tests:
 """
 # demo = dbHandler()
 # print(demo.read("db.json"))
+
