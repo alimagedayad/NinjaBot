@@ -26,13 +26,13 @@
     {
         "entryPoint": "filter",
         "patterns": ["filter", "proposition"],
-        "entities": ["price", "os"],
+        "entities": ["price", "os","size","brand"],
         "responses": ["please wait while the filtering is processing..."]
     },
     {
         "entryPoint": "sort",
         "patterns": ["arrang", "catalogu", "categor", "assort"],
-        "entities": ["price"],
+        "entities": ["price","name","brand"],
         "responses":  ["please wait while the sorting is processing..."]
     },
     {

@@ -38,7 +38,7 @@ class ManagePhones:
                 brand:{ManagePhones.current_list[i].brand}
                 os:{ManagePhones.current_list[i].os}
                 price:{ManagePhones.current_list[i].price}
-                size:{ManagePhones.current_list[i].size}
+                size:{ManagePhones.current_list[i].size} gb
                 color:{ManagePhones.current_list[i].color}
                 rating: {ManagePhones.current_list[i].recommend_score}/10
                 ++++++++++++++++
@@ -65,6 +65,10 @@ class ManagePhones:
             self.filter_by_OS()
         elif specific == 'price':
             self.filter_by_price()
+        elif specific == 'brand':
+            self.filter_by_brand()
+        elif specific == 'size':
+            self.filter_by_size()
         else:
             print("I'm sorry we cannot do this operation at this moment")
 
@@ -101,12 +105,46 @@ class ManagePhones:
         print("Here are your filtered phones:")
         self.print_name()
 
+
+    def filter_by_brand(self):
+        filtered_list_brand = []
+        brand = input("Enter desired brand: ").lower()
+        print("Brand: ", brand)
+        for Phone in ManagePhones.list_phones:
+            if brand in Phone.brand:
+                filtered_list_brand.append(Phone)
+        if len(filtered_list_brand) == 0:
+            print("This brand is not available in this store")
+            return None 
+        ManagePhones.current_list = filtered_list_brand[:]
+        print("Here are your filtered phones:")
+        self.print_name()
+    
+    def filter_by_size(self):
+        filtered_list_size = []
+        s = int(input("Enter lower size range: "))
+        d = int(input("Enter upper size range: "))
+
+        for Phone in (y for y in ManagePhones.list_phones if s <= y.size <= d):
+            filtered_list_size.append(Phone)
+        if len(filtered_list_size) == 0:
+            print("Sorry. We do not have phones with this specifiction...")
+            return None
+        ManagePhones.current_list = filtered_list_size[:]
+        print("Here are your filtered phones:")
+        self.print_name()
+
+
     def sort(self, specific = None):
         if specific == None:
             specific = input("How would you like to sort the phones? \n")
             specific = specific.lower()
         if specific == 'price':
             self.sort_price()
+        elif specific == 'name':
+            self.sort_by_name()
+        elif specific == 'brand':
+            self.sort_by_brand()
         else:
             print("I'm sorry we cannot do this operation at this moment")
 
@@ -123,6 +161,42 @@ class ManagePhones:
         ManagePhones.current_list = temp[:]
         self.print_name()
 
+    def sort_by_name(self):
+        sortn = input("Enter whether to sort by name a-z or z-a: ")
+        sorted_list_by_name = sorted(ManagePhones.current_list, key=lambda Phone: Phone.name.lower())
+        
+        if sortn == "a-z":
+            ManagePhones.current_list = sorted_list_by_name[:]
+            
+        elif sortn == "z-a":
+            sorted_list_by_name.reverse()
+            ManagePhones.current_list = sorted_list_by_name[:]
+        else:
+            print(f"Sorting {sortn} unavailable")
+            return None
+        
+        self.print_name()
+
+    def sort_by_brand(self):
+        sortn = input("Enter whether to sort by name a-z or z-a: ")
+        sorted_list_by_name = sorted(ManagePhones.current_list, key=lambda Phone: Phone.brand.lower())
+        
+        if sortn == "a-z":
+            ManagePhones.current_list = sorted_list_by_name[:]
+            
+        elif sortn == "z-a":
+            sorted_list_by_name.reverse()
+            ManagePhones.current_list = sorted_list_by_name[:]
+        else:
+            print(f"Sorting {sortn} unavailable")
+            return None
+        
+        self.print_name()
+
+
+
+
+
     def recommend_phone(self):
         id = 0
         max = ManagePhones.current_list[id].recommend_score
@@ -138,7 +212,7 @@ class ManagePhones:
                 brand:{ManagePhones.current_list[id].brand}
                 os:{ManagePhones.current_list[id].os}
                 price:{ManagePhones.current_list[id].price}
-                size:{ManagePhones.current_list[id].size}
+                size:{ManagePhones.current_list[id].size} gb
                 color:{ManagePhones.current_list[id].color}
                 rating: {ManagePhones.current_list[id].recommend_score}/10
                 ++++++++++++++++
@@ -161,7 +235,7 @@ class ManagePhones:
                 brand:{phone.brand}
                 os:{phone.os}
                 price:{phone.price}
-                size:{phone.size}
+                size:{phone.size} gb
                 color:{phone.color}
                 rating: {phone.recommend_score}/10
                 stock: {stock}
@@ -243,6 +317,8 @@ class ManagePhones:
         ph.order_phone(f"order number: {order_num}: \t Phone id: {id}\t info: {name}\t {phone_number} \t branch: {branch}\n")
         self.update_list()
 
+    
+
 
         
         
@@ -259,11 +335,12 @@ class ManagePhones:
 TESTING
 '''
     
-mp = ManagePhones()
-mp.update_list()
+# mp = ManagePhones()
+# mp.sort("brand")
+# mp.update_list()
 # mp.reserve_phone()
 # # mp.print_name()
-# mp.filter('os')
+# mp.filter('size')
 # mp.recommend_phone()
 
 

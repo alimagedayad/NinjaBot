@@ -37,7 +37,7 @@ class TextInput():
         text = self.text
         text = text.lower()
         text_tokens = text.split()
-        tokens_without_sw = [word for word in text_tokens if (not word in stopwords.words()) or word in ['os', 'where','when']]
+        tokens_without_sw = [word for word in text_tokens if (not word in stopwords.words()) or word in ['os', 'where','when','name']]
         temp = []
         for word in tokens_without_sw:
             temp.append(porter.stem(word))
