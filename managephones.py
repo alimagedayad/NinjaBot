@@ -133,6 +133,20 @@ class ManagePhones:
         ManagePhones.current_list = filtered_list_size[:]
         print("Here are your filtered phones:")
         self.print_name()
+        
+    def filter_by_ram(self):
+        filtered_list_ram = []
+        r = int(input("Enter lower ram range: "))
+        f = int(input("Enter upper ram range: "))
+
+        for Phone in (y for y in ManagePhones.list_phones if r <= y.size <= f):
+            filtered_list_ram.append(Phone)
+        if len(filtered_list_ram) == 0:
+            print("Sorry. We do not have phones with this specifiction...")
+            return None
+        ManagePhones.current_list = filtered_list_ram[:]
+        print("Here are your filtered phones:")
+        self.print_name()
 
 
     def sort(self, specific = None):
