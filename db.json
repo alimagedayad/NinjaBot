@@ -10,7 +10,7 @@
         "recommend": 10,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
         "id": 2,
@@ -23,7 +23,7 @@
         "recommend": 5,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
         "id": 3,
@@ -36,7 +36,7 @@
         "recommend": 7,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
         "id": 4,
@@ -49,7 +49,7 @@
         "recommend": 7,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
         "id": 5,
@@ -62,7 +62,7 @@
         "recommend": 6,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
         "id": 6,
@@ -75,7 +75,7 @@
         "recommend": 9,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
         "id": 7,
@@ -88,7 +88,7 @@
         "recommend": 8,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000"
     },
     {
         "id": 8,
@@ -101,7 +101,7 @@
         "recommend": 2,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000"
     },
     {
         "id": 9,
@@ -114,7 +114,7 @@
         "recommend": 4,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000"
     },
     {
         "id": 10,
@@ -127,7 +127,7 @@
         "recommend": 5,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
         "id": 11,
@@ -140,7 +140,7 @@
         "recommend": 6,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
         "id": 12,
@@ -153,7 +153,7 @@
         "recommend": 7,
         "stock": 11
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
         "id": 13,
@@ -166,7 +166,7 @@
         "recommend": 8,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 14,
@@ -179,7 +179,7 @@
         "recommend": 1,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 15,
@@ -192,7 +192,7 @@
         "recommend": 3,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 16,
@@ -205,7 +205,7 @@
         "recommend": 4,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 17,
@@ -218,7 +218,7 @@
         "recommend": 7,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 18,
@@ -231,7 +231,7 @@
         "recommend": 9,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 19,
@@ -244,7 +244,7 @@
         "recommend": 6,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
         "id": 20,
@@ -257,7 +257,7 @@
         "recommend": 8,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
         "id": 21,
@@ -270,7 +270,7 @@
         "recommend": 4,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
         "id": 22,
@@ -283,7 +283,7 @@
         "recommend": 6,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 23,
@@ -296,7 +296,7 @@
         "recommend": 4,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 24,
@@ -309,7 +309,7 @@
         "recommend": 2,
         "stock": 12
         "ram": 6
-        "photo": https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000
+        "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
         "id": 25,
@@ -322,7 +322,7 @@
         "recommend": 4,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Pink_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Pink_SKUimage.jpg"
     },
     {
         "id": 26,
@@ -335,7 +335,7 @@
         "recommend": 8,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Gray_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Gray_SKUimage.jpg"
     },
     {
         "id": 27,
@@ -348,7 +348,7 @@
         "recommend": 9,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Blue_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Blue_SKUimage.jpg"
     },
     {
         "id": 28,
@@ -361,7 +361,7 @@
         "recommend": 7,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Black_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Black_SKUimage.jpg"
     },
     {
         "id": 29,
@@ -374,7 +374,7 @@
         "recommend": 9,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Black_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Black_SKUimage.jpg"
     },
     {
         "id": 30,
@@ -387,7 +387,7 @@
         "recommend": 4,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Gray_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Gray_SKUimage.jpg"
     },
     {
         "id": 31,
@@ -400,7 +400,7 @@
         "recommend": 3,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Gray_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Gray_SKUimage.jpg"
     },
     {
         "id": 32,
@@ -413,7 +413,7 @@
         "recommend": 7,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Blue_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Blue_SKUimage.jpg"
     },
     {
         "id": 33,
@@ -426,7 +426,7 @@
         "recommend": 8,
         "stock": 12
         "ram": 8
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Blue_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Blue_SKUimage.jpg"
     },
     {
         "id": 34,
@@ -439,7 +439,7 @@
         "recommend": 6,
         "stock": 12
         "ram": 12
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Black_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Black_SKUimage.jpg"
     },
     {
         "id": 35,
@@ -452,7 +452,7 @@
         "recommend": 3,
         "stock": 12
         "ram": 12
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Black_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Black_SKUimage.jpg"
     },
     {
         "id": 36,
@@ -465,7 +465,7 @@
         "recommend": 8,
         "stock": 12
         "ram": 12
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg"
     },
     {
         "id": 37,
@@ -478,6 +478,6 @@
         "recommend": 4,
         "stock": 12
         "ram": 12
-        "photo": https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg"
     }
 ]
