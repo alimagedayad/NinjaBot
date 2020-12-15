@@ -8,8 +8,8 @@
         "size": 128,
         "color": "graphite",
         "recommend": 10,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
@@ -21,8 +21,8 @@
         "size": 256,
         "color": "graphite",
         "recommend": 5,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
@@ -47,8 +47,8 @@
         "size": 128,
         "color": "silver",
         "recommend": 7,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
@@ -60,8 +60,8 @@
         "size": 256,
         "color": "silver",
         "recommend": 6,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
@@ -73,8 +73,8 @@
         "size": 512,
         "color": "silver",
         "recommend": 9,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
@@ -86,8 +86,8 @@
         "size": 128,
         "color": "gold",
         "recommend": 8,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000"
     },
     {
@@ -99,8 +99,8 @@
         "size": 256,
         "color": "gold",
         "recommend": 2,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000"
     },
     {
@@ -112,8 +112,8 @@
         "size": 512,
         "color": "gold",
         "recommend": 4,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021659000"
     },
     {
@@ -125,8 +125,8 @@
         "size": 128,
         "color": "pacific blue",
         "recommend": 5,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
@@ -138,8 +138,8 @@
         "size": 256,
         "color": "pacific blue",
         "recommend": 6,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
@@ -151,8 +151,8 @@
         "size": 512,
         "color": "pacific blue",
         "recommend": 7,
-        "stock": 11
-        "ram": 6
+        "stock": 11,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021661000"
     },
     {
@@ -164,8 +164,8 @@
         "size": 128,
         "color": "graphite",
         "recommend": 8,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -177,8 +177,8 @@
         "size": 256,
         "color": "graphite",
         "recommend": 1,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -190,8 +190,8 @@
         "size": 512,
         "color": "graphite",
         "recommend": 3,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -203,8 +203,8 @@
         "size": 128,
         "color": "silver",
         "recommend": 4,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -216,8 +216,8 @@
         "size": 256,
         "color": "silver",
         "recommend": 7,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -229,8 +229,8 @@
         "size": 512,
         "color": "silver",
         "recommend": 9,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-silver-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -242,8 +242,8 @@
         "size": 128,
         "color": "gold",
         "recommend": 6,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
@@ -255,8 +255,8 @@
         "size": 256,
         "color": "gold",
         "recommend": 8,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
@@ -268,8 +268,8 @@
         "size": 512,
         "color": "gold",
         "recommend": 4,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-gold-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021660000"
     },
     {
@@ -281,8 +281,8 @@
         "size": 128,
         "color": "pacific blue",
         "recommend": 6,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -294,8 +294,8 @@
         "size": 256,
         "color": "pacific blue",
         "recommend": 4,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -307,8 +307,8 @@
         "size": 512,
         "color": "pacific blue",
         "recommend": 2,
-        "stock": 12
-        "ram": 6
+        "stock": 12,
+        "ram": 6,
         "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-max-blue-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     },
     {
@@ -320,8 +320,8 @@
         "size": 128,
         "color": "cloud pink",
         "recommend": 4,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Pink_SKUimage.jpg"
     },
     {
@@ -333,8 +333,8 @@
         "size": 128,
         "color": "cosmic grey",
         "recommend": 8,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Gray_SKUimage.jpg"
     },
     {
@@ -346,8 +346,8 @@
         "size": 128,
         "color": "cloud blue",
         "recommend": 9,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20_Blue_SKUimage.jpg"
     },
     {
@@ -359,8 +359,8 @@
         "size": 128,
         "color": "cosmic black",
         "recommend": 7,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Black_SKUimage.jpg"
     },
     {
@@ -372,8 +372,8 @@
         "size": 512,
         "color": "cosmic black",
         "recommend": 9,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Black_SKUimage.jpg"
     },
     {
@@ -385,8 +385,8 @@
         "size": 128,
         "color": "cosmic grey",
         "recommend": 4,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Gray_SKUimage.jpg"
     },
     {
@@ -398,8 +398,8 @@
         "size": 512,
         "color": "cosmic grey",
         "recommend": 3,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Gray_SKUimage.jpg"
     },
     {
@@ -411,8 +411,8 @@
         "size": 128,
         "color": "cloud blue",
         "recommend": 7,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Blue_SKUimage.jpg"
     },
     {
@@ -424,8 +424,8 @@
         "size": 512,
         "color": "cloud blue",
         "recommend": 8,
-        "stock": 12
-        "ram": 8
+        "stock": 12,
+        "ram": 8,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20plus_Blue_SKUimage.jpg"
     },
     {
@@ -437,8 +437,8 @@
         "size": 128,
         "color": "cosmic black",
         "recommend": 6,
-        "stock": 12
-        "ram": 12
+        "stock": 12,
+        "ram": 12,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Black_SKUimage.jpg"
     },
     {
@@ -450,8 +450,8 @@
         "size": 512,
         "color": "cosmic black",
         "recommend": 3,
-        "stock": 12
-        "ram": 12
+        "stock": 12,
+        "ram": 12,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Black_SKUimage.jpg"
     },
     {
@@ -463,8 +463,8 @@
         "size": 128,
         "color": "cosmic grey",
         "recommend": 8,
-        "stock": 12
-        "ram": 12
+        "stock": 12,
+        "ram": 12,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg"
     },
     {
@@ -476,8 +476,8 @@
         "size": 512,
         "color": "cosmic grey",
         "recommend": 4,
-        "stock": 12
-        "ram": 12
+        "stock": 12,
+        "ram": 12,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg"
     }
 ]
