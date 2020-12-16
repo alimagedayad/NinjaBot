@@ -6,7 +6,7 @@ class Phone:
     db = dbHandler()
     db.read("db.json")
 
-    def __init__(self, id_num=None, name=None, brand=None, os=None, price=None, size=None, color=None, recommend_score= None, stock=None):
+    def __init__(self, id_num=None, name=None, brand=None, os=None, price=None, size=None, color=None, recommend_score= None, stock=None, link = None, ram = None):
         self.id = id_num
         self.name = name
         self.brand = brand
@@ -16,6 +16,8 @@ class Phone:
         self.color = color
         self.recommend_score = recommend_score
         self.stock = stock
+        self.ram = ram
+        self.link = link
 
     def get_phone(self,phone_num):
         self.id = Phone.db.memory[phone_num]['id']
@@ -27,6 +29,8 @@ class Phone:
         self.color = Phone.db.memory[phone_num]['color']
         self.recommend_score =Phone.db.memory[phone_num]['recommend']
         self.stock = Phone.db.memory[phone_num]['stock']
+        self.ram = Phone.db.memory[phone_num]['ram']
+        self.link = Phone.db.memory[phone_num]['photo']
 
         return self
     

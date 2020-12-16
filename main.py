@@ -28,18 +28,30 @@ class ChatBot:
     def start_bot(self):
         prom = ""
         rep = TI(prom)
+        insult_count =0
         while True:
             prom = input("-> ")
-            if prom == 'quit':
+            if prom == 'quit' or insult_count > 2:
                 break
             rep = TI(prom)
             rep.text_initiation()
             rep = rep.text
-            detect_purpose = MI.ManageIntent()
-            detect_purpose.get_response(rep)
+            if self.check_insult(rep, insult_count):
+                insult_count+=1
+            else:
+                detect_purpose = MI.ManageIntent()
+                detect_purpose.get_response(rep)
     
     def bot_end(self):
         print("Goodbye!!!")
+
+    def check_insult(self, cleanlist, count):
+        cuss = ['fuck','shit','asshole','cunt','suck','damn','cock','dick','whore','pussy']
+        for word in cleanlist:
+            if word in cuss:
+                print(f"This type of language is intolerable. Please refrain from using it again. Do so again {3-count-1} times and the bot will close")
+                return True
+        return False
 
 
 

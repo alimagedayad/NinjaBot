@@ -28,22 +28,7 @@ class ManagePhones:
 
     def __init__(self):
         pass
-    
-    def print_list(self):
-        for i in range(len(ManagePhones.current_list)):
-            print(f"""
-                ++++++++++++++++
-                id: {ManagePhones.current_list[i].id}
-                name:{ManagePhones.current_list[i].name}
-                brand:{ManagePhones.current_list[i].brand}
-                os:{ManagePhones.current_list[i].os}
-                price:{ManagePhones.current_list[i].price}
-                size:{ManagePhones.current_list[i].size} gb
-                color:{ManagePhones.current_list[i].color}
-                rating: {ManagePhones.current_list[i].recommend_score}/10
-                ++++++++++++++++
-                """)
-    
+#print without details: used in sorting and filtering     
     def print_name(self):
         for i in range(len(ManagePhones.current_list)):
             print(f"""
@@ -53,10 +38,10 @@ class ManagePhones:
                 price: {ManagePhones.current_list[i].price}
                 ++++++++++++++++
                 """)
-
+#refresh after sorting and filtering
     def reinit(self):
         ManagePhones.current_list = ManagePhones.list_phones[:]
-    
+#===================FILTERS    
     def filter(self,specific = None):
         if specific == None:
             specific = input("How would you like to filter the phones? \n")
@@ -69,6 +54,8 @@ class ManagePhones:
             self.filter_by_brand()
         elif specific == 'size':
             self.filter_by_size()
+        elif specific == 'ram':
+            self.filter_by_ram()
         else:
             print("I'm sorry we cannot do this operation at this moment")
 
@@ -105,7 +92,6 @@ class ManagePhones:
         print("Here are your filtered phones:")
         self.print_name()
 
-
     def filter_by_brand(self):
         filtered_list_brand = []
         brand = input("Enter desired brand: ").lower()
@@ -134,7 +120,20 @@ class ManagePhones:
         print("Here are your filtered phones:")
         self.print_name()
 
+    def filter_by_ram(self):
+        filtered_list_ram = []
+        r = int(input("Enter lower ram range: "))
+        f = int(input("Enter upper ram range: "))
 
+        for Phone in (y for y in ManagePhones.list_phones if r <= y.ram <= f):
+            filtered_list_ram.append(Phone)
+        if len(filtered_list_ram) == 0:
+            print("Sorry. We do not have phones with this specifiction...")
+            return None
+        ManagePhones.current_list = filtered_list_ram[:]
+        print("Here are your filtered phones:")
+        self.print_name()
+#=================SORTING
     def sort(self, specific = None):
         if specific == None:
             specific = input("How would you like to sort the phones? \n")
@@ -147,8 +146,7 @@ class ManagePhones:
             self.sort_by_brand()
         else:
             print("I'm sorry we cannot do this operation at this moment")
-
-        
+     
     def sort_price(self):
         temp = ManagePhones.current_list[:]
         for i in range(1,len(temp)):
@@ -192,11 +190,7 @@ class ManagePhones:
             return None
         
         self.print_name()
-
-
-
-
-
+#recommendation
     def recommend_phone(self):
         id = 0
         max = ManagePhones.current_list[id].recommend_score
@@ -214,12 +208,13 @@ class ManagePhones:
                 price:{ManagePhones.current_list[id].price}
                 size:{ManagePhones.current_list[id].size} gb
                 color:{ManagePhones.current_list[id].color}
+                ram: {phone.ram} gb
                 rating: {ManagePhones.current_list[id].recommend_score}/10
                 ++++++++++++++++
                 """)
 
-
-
+#===================== RESERVATION
+# # check detailed information (unlike sorting and filtering)
     def check_phone_info(self, id):
         stock = "not in stock"
         if self.check_if_stock(id):
@@ -237,14 +232,17 @@ class ManagePhones:
                 price:{phone.price}
                 size:{phone.size} gb
                 color:{phone.color}
+                ram: {phone.ram} gb
                 rating: {phone.recommend_score}/10
                 stock: {stock}
+                
+                {phone.link}
                 ++++++++++++++++
                 """)
                 return True
         print("This phone is not available")
         return False
-
+#check if phone is in stock
     def check_if_stock(self, id):
         for phone in ManagePhones.list_phones:
             # print(type(phone))
@@ -254,14 +252,14 @@ class ManagePhones:
                 else:
                     return False
         return False
-
+#remove a phone from stock
     def remove_stock(self,id):
         for phone in ManagePhones.list_phones:
             # print(type(phone))
             if phone.id == id:
                 phone.stock -=1
         ManagePhones.current_list = ManagePhones.list_phones[:]
-
+#updates the db after purchase
     def update_list(self):
         ls = []
         for phone in ManagePhones.list_phones:
@@ -270,9 +268,7 @@ class ManagePhones:
         # print(ls[0]['name'])
         ph = Phone()
         ph.update_db(ls)
-
-
-    
+#reserving the phone    
     def reserve_phone(self, id = None):
         if id == None or id > len(ManagePhones.list_phones):
             id = int(input("Which Phone do you want to check "))
@@ -336,11 +332,12 @@ TESTING
 '''
     
 # mp = ManagePhones()
+# mp.check_phone_info(5)
 # mp.sort("brand")
 # mp.update_list()
 # mp.reserve_phone()
 # # mp.print_name()
-# mp.filter('size')
+# mp.filter('ram')
 # mp.recommend_phone()
 
 
