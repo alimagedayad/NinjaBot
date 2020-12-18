@@ -286,6 +286,7 @@ class ManagePhones:
                 return None
             else:
                 print("I didn't understand that please write yes if you wish to reserve a phone and no if you don't")
+                reserve = input("Do you want to reserve this phone? ")
         
         print("You're in luck, The phone is currently in stock!! However we don't have a delivery system so you will have to come pick your device up and pay in one of our branches")
         last_check = False
