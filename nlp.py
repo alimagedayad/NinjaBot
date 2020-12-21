@@ -41,15 +41,15 @@ class TextInput():
         temp = []
         for word in tokens_without_sw:
             temp.append(porter.stem(word))
+        temp = list(dict.fromkeys(temp))
         self.text = temp
 
 """
 ==================================TESTING========================================
 """
-# message = TextInput("Nick likes to play football, however he is not too fond of tennis.")
-# message.text_initiation()   #method does not have an output, the change is within
+# message = TextInput("os and price and and bananas and bananas and bananas and apples and bananas and bananas and bananas and bananas and bananas and bananas and bananas")
+# message.text_initiation()
 # print(message.text)
-# print(message.if_similar("Nice",0))  #use i with len of list
 """
 ==========================================================================
 """

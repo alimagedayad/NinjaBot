@@ -32,5 +32,7 @@ class TestT:
 
 
 # testing
-# chat = TestT("message")
+# chat = TestT()
+# print(chat.getInfo())
+# chat.setMessage('Hi')
 # print(chat.getInfo())

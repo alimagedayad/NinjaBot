@@ -1,10 +1,13 @@
 from dbHandler import dbHandler
+import os
+from pathlib import Path
+
 
 
 class Phone:
     "Common base class for all phones"
     db = dbHandler()
-    db.read("db.json")
+    db.read('db.json')
 
     def __init__(self, id_num=None, name=None, brand=None, os=None, price=None, size=None, color=None, recommend_score= None):
         self.id = id_num

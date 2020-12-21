@@ -67,6 +67,14 @@ class ManagePhones:
 
         return listPhone
 
+    def print_name2(self):
+        lP = []
+        for i in range(len(ManagePhones.current_list)):
+            lP.append(
+                [ManagePhones.current_list[i].name, ManagePhones.current_list[i].price]
+            )
+        return lP
+
     def print_name(self):
         lP = []
         for i in range(len(ManagePhones.current_list)):
@@ -99,12 +107,13 @@ class ManagePhones:
 
     def filter(self, specific=None):
         if specific == None:
-            specific = input("How would you like to filter the phones? \n")
-            specific = specific.lower()
+            # specific = input("How would you like to filter the phones? \n")
+            # specific = specific.lower()
+            return "How would you like to filter the phones?"
         if specific == "os":
-            self.filter_by_OS()
+            return self.filter_by_OS()
         elif specific == "price":
-            self.filter_by_price()
+            return self.filter_by_price()
         else:
             print("I'm sorry we cannot do this operation at this moment")
 
@@ -141,17 +150,18 @@ class ManagePhones:
         print("Here are your filtered phones:")
         self.print_name()
 
-    def sort(self, specific=None, recipient_id="123"):
+    def sort(self, specific=None):
         # if specific == None:
         #     specific = input("How would you like to sort the phones? \n")
         #     specific = specific.lower()
         #     send_message(recipient_id, "How'd you like to sort the phones?")
         #     return ""
         if specific == "price":
-
             return self.sort_price()
+        elif specific == "size":
+            return ["eWlrZXM=", "bG9s"]
         else:
-            print("I'm sorry we cannot do this operation at this moment")
+            return "How you'd like to sort the phones?"
 
     def sort_price(self):
         temp = ManagePhones.current_list[:]
@@ -163,7 +173,9 @@ class ManagePhones:
                 j -= 1
             temp[j + 1] = item_to_insert
         ManagePhones.current_list = temp[:]
-        res = self.print_name()
+
+        # hna
+        res = self.print_name2()
         return res
 
     def recommend_phone(self):

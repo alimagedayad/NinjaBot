@@ -51,6 +51,21 @@ class ManageIntent:
     def extractIntents(self, cleanList):
         return [self.extractIntent(cleanList), self.check_second_intent(cleanList)]
 
+    def checkEntities(self, cleanList):
+        priority = 1
+        checkedEntities = {}
+        intentObj = ManageIntent.intentObj.get_all()
+        for item in cleanList:
+            for item2 in intentObj:
+                for entity in set(item2["entities"]):
+                    if item == entity:
+                        if item in checkedEntities.keys():
+                            pass
+                        else:
+                            checkedEntities[str.lower(item)] = [True, priority]
+                            priority += 1
+        return checkedEntities
+
     def get_response(self, cleanList, client="user", recipient_id="123"):
         if client == "messenger":
             print("called from messenger")
@@ -86,15 +101,6 @@ class ManageIntent:
 """
 TESTING
 """
-# print(">>start")
 # demo = ManageIntent()
-# print(">>start")
-# inp = ["filter","os"]
-# print(">>start")
-# # # print(demo.extractIntent(inp))
-# # # print(demo.check_second_intent(inp))
-# demo.get_response(inp)
-# inp = ["clear"]
-# demo.get_response(inp)
-# inp = ["display"]
-# demo.get_response(inp)
+# inp = ["os","price","ffff"]
+# demo.checkEntities(inp)

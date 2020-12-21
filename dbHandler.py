@@ -1,10 +1,9 @@
 import json
-
+import os
 
 class dbHandler:
     def __init__(self):
         self.memory = None
-
     def read(self, json_file):
         with open(json_file) as jF:
             self.memory = json.load(jF)
@@ -15,4 +14,4 @@ class dbHandler:
 Tests:
 """
 # demo = dbHandler()
-# print(demo.read("test.json"))
+# print(demo.read("db.json"))

@@ -32,7 +32,7 @@
     {
         "entryPoint": "sort",
         "patterns": ["arrang", "catalogu", "categor", "assort"],
-        "entities": ["price"],
+        "entities": ["price", "size"],
         "responses":  ["please wait while the sorting is processing..."]
     },
     {

@@ -7,16 +7,23 @@ import manageIntent as MI
 import managephones as MP
 import base64 as b6
 
+chat = Terminal()
+
+# msg = None
+# flag = 0
+# i1 = None
+# i2 = None
+
 app = Flask(__name__)
-ACCESS_TOKEN = "EAAE9kzEJZXXXXXXXmZBlV838bIhHUs3ZC1WGtna9xDLDL1XzCE6TSs0BQZA2JzRupeEhV31GIqwLhp8rK6cNZBdAGusBYZBRoLXS6FWtHWh7hCXE2gnAkFbJp9X0gWggbhV6kb01ReL4DrwNYosTJOXft0XXXX"
+ACCESS_TOKEN = "EAAE9kzEJZBnQBAA0BaBtuP89eZAZCyZBL54IcgKg67MlZCkkhFLwNk5cvmZBlV838bIhHUs3ZC1WGtna9xDLDL1XzCE6TSs0BQZA2JzRupeEhV31GIqwLhp8rK6cNZBdAGusBYZBRoLXS6FWtHWh7hCXE2gnAkFbJp9X0gWggbhV6kb01ReL4DrwNYosTJOXft05cZD"
 VERIFY_TOKEN = "youssef"
 bot = Bot(ACCESS_TOKEN)
-
-chat = Terminal()
 
 
 @app.route("/webhook", methods=["GET", "POST"])
 def receive_message():
+    global msg, flag, i1, i2, counter
+    responseComplete = False
     try:
         if request.method == "GET":
             """Before allowing people to message your bot, Facebook has implemented a verify token
@@ -35,51 +42,146 @@ def receive_message():
                         recipient_id = message["sender"]["id"]
                         if message["message"].get("text"):
                             userMessage = message["message"].get("text")
+                            send_type(recipient_id, 0)
+                            # send_buttons(recipient_id, "text", ["1", "2"])
+                            msg, flag, i1, i2 = chat.getInfo()
+                            send_message(
+                                recipient_id,
+                                f"i1: {i1} \ni2: {i2} \nflag: {flag} \nmsg: {msg}",
+                            )
                             rep = TI(userMessage)
                             rep.text_initiation()
                             rep = list(set(rep.text))
                             detect_purpose = MI.ManageIntent()
-                            # detect_purpose.get_response(rep)
-                            # response = detect_purpose.get_response(
-                            #     rep, client="messenger", recipient_id=recipient_id
-                            # )
-                            print("NLP: ", rep)
-                            print(
-                                "extracted intents: ",
-                                detect_purpose.extractIntents(rep),
-                            )
                             intent1, intent2 = detect_purpose.extractIntents(rep)
-                            msg, flag, i1, i2 = chat.getInfo()
-                            if intent1 and intent2 == None:
-                                chat.setFlag(1)
-                            if intent1 == "":
+                            manage = MP.ManagePhones()
+
+                            print("intents: ", intent1, intent2, i1, i2)
+
+                            if intent1 == None and i1 == None:
                                 send_message(
                                     recipient_id,
                                     "I didn't quit get that. Please try again.",
                                 )
-                                return "success"
-                            elif intent1 == "sort" or i1 == "sort":
-                                manage = MP.ManagePhones()
+                            elif intent1 != None and intent2 == None:
+                                if intent1 == "sort":
+                                    res = manage.sort()
+                                elif intent1 == "filter":
+                                    res = manage.filter()
+                                send_message(recipient_id, res)
+                            elif intent1 != None and intent2 != None:
                                 res = []
-                                if intent2 == "price" or i2 == "price":
-                                    res = manage.sort(
-                                        "price", recipient_id=recipient_id
-                                    )
-                                elif intent2 == None:
-                                    send_message(
-                                        recipient_id,
-                                        "How would you like to sort the phones?",
-                                    )
-                                    return "success"
+                                limit = 9
+                                if intent1 == "sort":
+                                    if intent2 == "price":
+                                        res = manage.sort(intent2)
+                                    elif intent2 == "size":
+                                        res = manage.sort(intent2)
+                                elif intent1 == "filter":
+                                    print("YOLO!")
                                 if len(res) > 0:
-                                    for index, item in enumerate(res):
-                                        if index <= 9:
-                                            text = b6.b64decode(item)
-                                            send_message(
-                                                recipient_id,
-                                                f"i: {index}\n{text.decode('utf-8')}",
-                                            )
-                                    return "success"
+                                    sendListv2(res, limit, recipient_id)
+                                    # for index, item in enumerate(res):
+                                    #     if index <= limit:
+                                    #         text = b6.b64decode(item)
+                                    #         send_message(
+                                    #             recipient_id,
+                                    #             f"i: {index}\n{text.decode('utf-8')}",
+                                    #         )
+                                    # return "success"
+
+                            elif intent1 is None and i1 is not None:
+                                res = []
+                                checkEntities = detect_purpose.checkEntities(rep)
+                                chosenEntity = None
+                                for i in checkEntities:
+                                    if checkEntities[i][-1] == 1:
+                                        chosenEntity = i
+                                print(chosenEntity)
+                                if i1 == "sort":
+                                    res = manage.sort(chosenEntity)
+                                    if len(res) > 0:
+                                        sendListv2(res, 10, recipient_id)
+
+                                elif i1 == "filter":
+                                    print("YOLO")
+                                pass
+
+                            # elif i1 == 'sort' and intent1 == None:
+                            #     secAttr = ''.join(rep)
+                            #     print('setAttr', secAttr)
+                            #     manage = MP.ManagePhones()
+                            #     res = []
+                            #     if secAttr == "price":
+                            #         res = manage.sort(
+                            #             "price", recipient_id=recipient_id
+                            #         )
+                            #         responseComplete = True
+                            #     elif secAttr == 'size':
+                            #         res = manage.sort(
+                            #             "size", recipient_id=recipient_id
+                            #         )
+                            #         responseComplete = True
+                            #     else:
+                            #         send_message(
+                            #             recipient_id,
+                            #             "I didn't quit get that. Please try again. Sorry dude!",
+                            #         )
+                            #     if len(res) > 0:
+                            #         for index, item in enumerate(res):
+                            #             if index <= 9:
+                            #                 text = b6.b64decode(item)
+                            #                 send_message(
+                            #                     recipient_id,
+                            #                     f"i: {index}\n{text.decode('utf-8')}"
+                            #                 )
+                            #         return "success"
+
+                            # elif intent1 == "sort" or i1 == "sort":
+                            #     manage = MP.ManagePhones()
+                            #     res = []
+                            #     if intent2 == "price" or i2 == "price":
+                            #         res = manage.sort(
+                            #             "price", recipient_id=recipient_id
+                            #         )
+                            #         responseComplete = True
+                            #     elif intent2 == None:
+                            #         send_message(
+                            #             recipient_id,
+                            #             "How would you like to sort the phones?",
+                            #         )
+                            #     if len(res) > 0:
+                            #         for index, item in enumerate(res):
+                            #             if index <= 9:
+                            #                 text = b6.b64decode(item)
+                            #                 send_message(
+                            #                     recipient_id,
+                            #                     f"i: {index}\n{text.decode('utf-8')}"
+                            #                 )
+                            #         return "success"
+
+                            # i1 = intent1
+                            # i2 = intent2
+                            # flag = 0
+                            # msg = userMessage
+
+                            chat.setI1(intent1)
+                            chat.setI2(intent2)
+
+                            if (
+                                (intent1 != None and intent1 != "")
+                                and (intent2 != None and intent2 != "")
+                                and responseComplete
+                            ):
+                                chat.setFlag(0)
+                            # if (intent1 != None or intent1 != '') and intent2 == None:
+                            #     chat.setFlag(0)
+                            elif intent1 != None and intent2 != None:
+                                chat.setFlag(1)
+                            else:
+                                chat.setFlag(-1)
+
+                            chat.setMessage(userMessage)
 
                             # send_message(recipient_id, "Finished =====")
                             # return "success"
@@ -92,13 +194,10 @@ def receive_message():
                             #     recipient_id, f"{detect_purpose.extractIntents(rep)}"
                             # )
 
-                            chat.setI1(intent1)
-                            chat.setI2(intent2)
                             return "success"
 
                         # if user sends us a GIF, photo,video, or any other non-text item
                         if message["message"].get("attachments"):
-                            response_sent_nontext = get_message()
                             for attach in message["message"].get("attachments"):
                                 if attach["type"] == "image":
                                     bot.send_image_url(
@@ -106,7 +205,7 @@ def receive_message():
                                     )
                                 print(attach["type"])
 
-        print("terminal tuple: ", chat.getInfo())
+        # print("terminal tuple: ", chat.getInfo())
     except Exception as e:
         print("Exception: ", e)
     return "Message Processed"
@@ -135,6 +234,79 @@ def verify_fb_token(token_sent):
 def send_message(recipient_id, response):
     # sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
+    return "success"
+
+
+def send_buttons(recipient_id, elements):
+    bot.send_message(
+        recipient_id,
+        {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": elements,
+                },
+            }
+            # "title": "Welcome!",
+            # "image_url": "https://incredideals.net/wp-content/uploads/2019/09/iphone11-select-2019-family.jpeg",
+            # "subtitle": "We have the right hat for everyone.",
+            # "default_action": {
+            #     "type": "web_url",
+            #     "url": "https://petersfancybrownhats.com/view?item=103",
+            #     "webview_height_ratio": "tall",
+            # },
+            # "buttons": [
+            #     {
+            #         "type": "web_url",
+            #         "url": "https://petersfancybrownhats.com",
+            #         "title": "View Website",
+            #     },
+            # ],
+        },
+    )
+    return "status"
+
+
+def phoneElementsCreate(
+    name,
+    body,
+    pic="https://incredideals.net/wp-content/uploads/2019/09/iphone11-select-2019-family.jpeg",
+):
+    return {
+        "title": name,
+        "image_url": pic,
+        "subtitle": body,
+    }
+
+
+def send_type(recipient_id, state=0):
+    if state == 0:
+        bot.send_action(recipient_id, "typing_on")
+    elif state == 1:
+        bot.send_action(recipient_id, "typing_off")
+    return "success"
+
+
+def sendList(list, limit, recipient_id):
+    elements = []
+    for index, item in enumerate(list):
+        if index < limit:
+            text = b6.b64decode(item)
+            send_message(
+                recipient_id,
+                f"i: {index}\n{text.decode('utf-8')}",
+            )
+    return "success"
+
+
+def sendListv2(list, limit, recipient_id):
+    elements = []
+    for index, item in enumerate(list):
+        if index < limit:
+            elements.append(phoneElementsCreate(item[0], f"price: {item[1]}"))
+    if len(elements) > 0:
+        send_buttons(recipient_id, elements)
     return "success"
 
 
