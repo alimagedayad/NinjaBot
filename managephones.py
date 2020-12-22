@@ -1,5 +1,5 @@
 from classes import Phone
-
+from datetime import date
 """
 INFORMATION:
 from outside the module,
@@ -270,9 +270,10 @@ class ManagePhones:
         ph.update_db(ls)
 #reserving the phone    
     def reserve_phone(self, id = None):
-        print("Here are the phones we have available due after your specifications:")
-        self.print_name()
+        
         if id == None or id > len(ManagePhones.list_phones):
+            print("Here are the phones we have available due after your specifications:")
+            self.print_name()
             id = int(input("Choose the id of the phone you want to check "))
 
         if not (self.check_if_stock(id)):
@@ -281,6 +282,7 @@ class ManagePhones:
         print("Here are the details of the phone you requested...")
         self.check_phone_info(id)
         reserve = input("Do you want to reserve this phone? ")
+        reserve = reserve.lower()
         while reserve != True:
             if reserve == 'yes' or reserve == 'y' or reserve == '1':
                 reserve = True
@@ -305,6 +307,7 @@ class ManagePhones:
             phone_number = input("Please enter you phone number so that we could contact you \n")
 
             reserve = input("Are you sure about this information? ")
+            reserve = reserve.lower()
             if reserve == 'yes' or reserve == 'y' or reserve == '1':
                 reserve = True
                 last_check = True
@@ -313,11 +316,10 @@ class ManagePhones:
         order_num = id*1000 + ManagePhones.list_phones[id-1].stock +1
         print(f"Phone is reserved!! Your order number is {order_num} Please come to the branch as asked to pick up and pay for it. If you don't come in the next 48 hours The phone will no longer be reserved!")
         ph = Phone()
-        ph.order_phone(f"order number: {order_num} \t Phone id: {id}\t info: {name}\t {phone_number} \t branch: {branch}\n")
+        today = date.today()
+        today = today.strftime("%d/%m/%Y")
+        ph.order_phone(f"order number: {order_num} \t Phone id: {id}\t info: {name}\t {phone_number} \t branch: {branch}\t  date: {today}\n")
         self.update_list()
-
-    
-
 
         
         

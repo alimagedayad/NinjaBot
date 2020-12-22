@@ -30,9 +30,9 @@ class ChatBot:
         prom = ""
         rep = TI(prom)
         insult_count =0
-        while True:
+        while insult_count<=2:
             prom = input("-> ")
-            if prom == 'quit' or insult_count > 2:
+            if prom == 'quit':
                 break
             rep = TI(prom)
             rep.text_initiation()
@@ -50,7 +50,10 @@ class ChatBot:
         cuss = ['fuck','shit','asshole','cunt','suck','damn','cock','dick','whore','pussy']
         for word in cleanlist:
             if word in cuss:
-                print(f"This type of language is intolerable. Please refrain from using it again. Do so again {3-count-1} times and the bot will close")
+                if count == 2:
+                    print("The chatbot will close!!")
+                else :
+                    print(f"This type of language is intolerable. Please refrain from using it again. Do so again {3-count-1} times and the bot will close")
                 return True
         return False
 
