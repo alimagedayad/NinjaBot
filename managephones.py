@@ -208,7 +208,7 @@ class ManagePhones:
                 price:{ManagePhones.current_list[id].price}
                 size:{ManagePhones.current_list[id].size} gb
                 color:{ManagePhones.current_list[id].color}
-                ram: {phone.ram} gb
+                ram: {ManagePhones.current_list[id].ram} gb
                 rating: {ManagePhones.current_list[id].recommend_score}/10
                 ++++++++++++++++
                 """)
