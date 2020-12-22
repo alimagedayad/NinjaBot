@@ -1,7 +1,6 @@
 from intent import Intent
 import managephones as MP
 import random
-from facebook import send_message
 
 
 class ManageIntent:
@@ -29,6 +28,13 @@ class ManageIntent:
         ManageIntent.intentObj.set_intent(intent)
         return intent
 
+    def greeting(self, word):
+        for item in ManageIntent.intentObj.get_all():
+            if item["entryPoint"] == word and len(item["responses"]) != 0:
+                return random.choice(item["responses"])
+                # return choice
+                # break
+
     def check_second_intent(self, cleanList):
         intent = None
         intentFound = False
@@ -47,6 +53,12 @@ class ManageIntent:
                 if intentFound:
                     break
         return intent
+
+    def check_number(self, cleanlist):
+        for word in cleanlist:
+            if word.isnumeric():
+                return int(word)
+        return -1
 
     def extractIntents(self, cleanList):
         return [self.extractIntent(cleanList), self.check_second_intent(cleanList)]
@@ -102,5 +114,7 @@ class ManageIntent:
 TESTING
 """
 # demo = ManageIntent()
-# inp = ["os","price","ffff"]
-# demo.checkEntities(inp)
+# # inp = ["os","price","ffff"]
+# # demo.checkEntities(inp)
+# x = demo.greeting("greeting")
+# print(x)

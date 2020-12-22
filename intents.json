@@ -26,13 +26,13 @@
     {
         "entryPoint": "filter",
         "patterns": ["filter", "proposition"],
-        "entities": ["price", "os"],
+        "entities": ["price", "os","size","brand","ram"],
         "responses": ["please wait while the filtering is processing..."]
     },
     {
         "entryPoint": "sort",
         "patterns": ["arrang", "catalogu", "categor", "assort"],
-        "entities": ["price", "size"],
+        "entities": ["price","name","brand", "size", "asc", "dsc"],
         "responses":  ["please wait while the sorting is processing..."]
     },
     {
@@ -47,5 +47,11 @@
         "patterns": ["clear"],
         "entities": [],
         "responses":  ["The updated list of phones have been cleared..."]
+    },
+    {
+        "entryPoint": "reserve",
+        "patterns": ["reserve", "buy", "information","choose","see"],
+        "entities": [],
+        "responses": ["Please wait..."]
     }
 ]

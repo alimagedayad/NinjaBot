@@ -13,16 +13,20 @@ chat = Terminal()
 # flag = 0
 # i1 = None
 # i2 = None
+p = 0
+firstRun = True
 
 app = Flask(__name__)
 ACCESS_TOKEN = "EAAE9kzEJZBnQBAA0BaBtuP89eZAZCyZBL54IcgKg67MlZCkkhFLwNk5cvmZBlV838bIhHUs3ZC1WGtna9xDLDL1XzCE6TSs0BQZA2JzRupeEhV31GIqwLhp8rK6cNZBdAGusBYZBRoLXS6FWtHWh7hCXE2gnAkFbJp9X0gWggbhV6kb01ReL4DrwNYosTJOXft05cZD"
 VERIFY_TOKEN = "youssef"
 bot = Bot(ACCESS_TOKEN)
 
+bannedUsers = []
+
 
 @app.route("/webhook", methods=["GET", "POST"])
 def receive_message():
-    global msg, flag, i1, i2, counter
+    global msg, flag, i1, i2, counter, p, firstRun
     responseComplete = False
     try:
         if request.method == "GET":
@@ -38,11 +42,14 @@ def receive_message():
                 messaging = event["messaging"]
                 for message in messaging:
                     if message.get("message"):
+                        p = 0
                         # Facebook Messenger ID for user so we know where to send response back to
                         recipient_id = message["sender"]["id"]
+                        if recipient_id in bannedUsers:
+                            send_message(recipient_id, "You're banned!")
+                            break
                         if message["message"].get("text"):
                             userMessage = message["message"].get("text")
-                            send_type(recipient_id, 0)
                             # send_buttons(recipient_id, "text", ["1", "2"])
                             msg, flag, i1, i2 = chat.getInfo()
                             send_message(
@@ -58,29 +65,41 @@ def receive_message():
 
                             print("intents: ", intent1, intent2, i1, i2)
 
-                            if intent1 == None and i1 == None:
+                            if (intent1 == None and i1 == None) or (
+                                intent1 == None and firstRun
+                            ):
                                 send_message(
                                     recipient_id,
                                     "I didn't quit get that. Please try again.",
                                 )
+
                             elif intent1 != None and intent2 == None:
+                                if intent1 == "greeting":
+                                    res = detect_purpose.greeting(intent1)
                                 if intent1 == "sort":
                                     res = manage.sort()
                                 elif intent1 == "filter":
                                     res = manage.filter()
                                 send_message(recipient_id, res)
+
                             elif intent1 != None and intent2 != None:
-                                res = []
                                 limit = 9
                                 if intent1 == "sort":
-                                    if intent2 == "price":
-                                        res = manage.sort(intent2)
-                                    elif intent2 == "size":
-                                        res = manage.sort(intent2)
+                                    res = manage.sort(intent2)
+                                    # if intent2 == "price":
+                                    #     res = manage.sort(intent2)
+                                    # elif intent2 == "size":
+                                    #     res = manage.sort(intent2)
+                                    # elif intent2 == "name":
+                                    #     res = manage.sort(intent2)
                                 elif intent1 == "filter":
-                                    print("YOLO!")
-                                if len(res) > 0:
+                                    pass
+                                if len(res) > 0 and type(res) is list:
                                     sendListv2(res, limit, recipient_id)
+                                elif type(res) is str:
+                                    send_message(recipient_id, res)
+                                else:
+                                    print("typeof: ", type(res))
                                     # for index, item in enumerate(res):
                                     #     if index <= limit:
                                     #         text = b6.b64decode(item)
@@ -89,7 +108,6 @@ def receive_message():
                                     #             f"i: {index}\n{text.decode('utf-8')}",
                                     #         )
                                     # return "success"
-
                             elif intent1 is None and i1 is not None:
                                 res = []
                                 checkEntities = detect_purpose.checkEntities(rep)
@@ -99,9 +117,22 @@ def receive_message():
                                         chosenEntity = i
                                 print(chosenEntity)
                                 if i1 == "sort":
-                                    res = manage.sort(chosenEntity)
-                                    if len(res) > 0:
+                                    p = 0
+                                    if i2 == "name":
+                                        res = manage.sort(i2, nameP=chosenEntity)
+                                    elif chosenEntity == "name":
+                                        res = manage.sort("name")
+                                        chat.setI1("sort")
+                                        chat.setI2("name")
+                                        p = 1
+                                    else:
+                                        res = manage.sort(chosenEntity)
+                                    if len(res) > 0 and type(res) is list:
                                         sendListv2(res, 10, recipient_id)
+                                    elif type(res) is str:
+                                        send_message(recipient_id, res)
+                                    else:
+                                        print("typeof: ", type(res))
 
                                 elif i1 == "filter":
                                     print("YOLO")
@@ -164,9 +195,11 @@ def receive_message():
                             # i2 = intent2
                             # flag = 0
                             # msg = userMessage
-
-                            chat.setI1(intent1)
-                            chat.setI2(intent2)
+                            if p == 1:
+                                pass
+                            else:
+                                chat.setI1(intent1)
+                                chat.setI2(intent2)
 
                             if (
                                 (intent1 != None and intent1 != "")
@@ -193,7 +226,7 @@ def receive_message():
                             # send_message(
                             #     recipient_id, f"{detect_purpose.extractIntents(rep)}"
                             # )
-
+                            firstRun = False
                             return "success"
 
                         # if user sends us a GIF, photo,video, or any other non-text item
