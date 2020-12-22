@@ -270,8 +270,10 @@ class ManagePhones:
         ph.update_db(ls)
 #reserving the phone    
     def reserve_phone(self, id = None):
+        print("Here are the phones we have available due after your specifications:")
+        self.print_name()
         if id == None or id > len(ManagePhones.list_phones):
-            id = int(input("Which Phone do you want to check "))
+            id = int(input("Choose the id of the phone you want to check "))
 
         if not (self.check_if_stock(id)):
             print("I'm sorry this phone is not in stock. Please try again at a later date!")
@@ -311,7 +313,7 @@ class ManagePhones:
         order_num = id*1000 + ManagePhones.list_phones[id-1].stock +1
         print(f"Phone is reserved!! Your order number is {order_num} Please come to the branch as asked to pick up and pay for it. If you don't come in the next 48 hours The phone will no longer be reserved!")
         ph = Phone()
-        ph.order_phone(f"order number: {order_num}: \t Phone id: {id}\t info: {name}\t {phone_number} \t branch: {branch}\n")
+        ph.order_phone(f"order number: {order_num} \t Phone id: {id}\t info: {name}\t {phone_number} \t branch: {branch}\n")
         self.update_list()
 
     

@@ -51,7 +51,7 @@
     ,
     {
         "entryPoint": "reserve",
-        "patterns": ["reserve", "buy", "information","choose","see"],
+        "patterns": ["reserve", "buy", "information","choose","see", "select"],
         "entities": [],
         "responses": ["Please wait..."]
     }

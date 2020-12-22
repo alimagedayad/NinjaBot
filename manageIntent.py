@@ -31,7 +31,6 @@ class ManageIntent:
         return intent
 
 
-
     def check_second_intent(self, cleanList):
         intent = None
         intentFound = False

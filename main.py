@@ -20,6 +20,7 @@ List:
 class ChatBot:
     def __init__(self):
         pass
+    
     def init_bot(self):
         print("Hello, I'm Ninja!")
         name = input("May I need know your name? \n")
