@@ -263,7 +263,7 @@ class ManagePhones:
     def update_list(self):
         ls = []
         for phone in ManagePhones.list_phones:
-            d = {"id": phone.id, "name": phone.name, "brand": phone.brand, "os": phone.os, "price": phone.price, "size": phone.size, "color": phone.color, "recommend" : phone.recommend_score, "stock":phone.stock}
+            d = {"id": phone.id, "name": phone.name, "brand": phone.brand, "os": phone.os, "price": phone.price, "size": phone.size, "color": phone.color, "recommend" : phone.recommend_score, "stock":phone.stock, "ram":phone.ram, "photo":phone.link}
             ls.append(d)
         # print(ls[0]['name'])
         ph = Phone()
