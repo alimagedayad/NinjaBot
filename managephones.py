@@ -1,5 +1,4 @@
 from classes import Phone
-from facebook import send_message
 import base64 as b6
 
 """
@@ -22,6 +21,7 @@ class ManagePhones:
         del p
         p = Phone()
         p = p.get_phone(i)
+
         list_phones[i] = p
 
     current_list = list_phones[:]
@@ -51,17 +51,6 @@ class ManagePhones:
                 + "\n rating: "
                 + ManagePhones.current_list[i].rating
             )
-            # ++++++++++++++++
-            # id: {ManagePhones.current_list[i].id}
-            # name:{ManagePhones.current_list[i].name}
-            # brand:{ManagePhones.current_list[i].brand}
-            # os:{ManagePhones.current_list[i].os}
-            # price:{ManagePhones.current_list[i].price}
-            # size:{ManagePhones.current_list[i].size}
-            # color:{ManagePhones.current_list[i].color}
-            # rating: {ManagePhones.current_list[i].recommend_score}/10
-            # ++++++++++++++++
-            # "
             print(x)
             listPhone.append(b6.b64encode(x))
 
@@ -71,7 +60,11 @@ class ManagePhones:
         lP = []
         for i in range(len(ManagePhones.current_list)):
             lP.append(
-                [ManagePhones.current_list[i].name, ManagePhones.current_list[i].price]
+                [
+                    ManagePhones.current_list[i].name,
+                    ManagePhones.current_list[i].price,
+                    ManagePhones.current_list[i].photo,
+                ]
             )
         return lP
 
@@ -105,55 +98,57 @@ class ManagePhones:
     def reinit(self):
         ManagePhones.current_list = ManagePhones.list_phones[:]
 
-    def filter(self, specific=None):
+    def filter(
+        self, specific=None, os=None, price=None, brand=None, size=None, ram=None
+    ):
         if specific == None:
-            specific = input("How would you like to filter the phones? \n")
-            specific = specific.lower()
+            return "How would you like to filter the phones? \n"
         if specific == "os":
-            self.filter_by_OS()
+            return self.filter_by_OS(os)
         elif specific == "price":
-            self.filter_by_price()
+            return self.filter_by_price(os)
         elif specific == "brand":
-            self.filter_by_brand()
+            return self.filter_by_brand(brand)
         elif specific == "size":
-            self.filter_by_size()
+            return self.filter_by_size(size)
         elif specific == "ram":
-            self.filter_by_ram()
+            return self.filter_by_ram(ram)
         else:
             print("I'm sorry we cannot do this operation at this moment")
 
-    def filter_by_OS(self):
+    def filter_by_OS(self, os):
+        print("filter os: ", os)
         sorted_list_iOS = []
         sorted_list_Android = []
-        os = input("Enter desired os: ").lower()
-        print("OS: ", os)
-        if os == "ios":
+
+        if os == None:
+            return "Enter desired os: "
+        elif os == "ios":
             for Phone in ManagePhones.list_phones:
                 if os in Phone.os:
                     sorted_list_iOS.append(Phone)
             ManagePhones.current_list = sorted_list_iOS[:]
-            print("Here are your filtered phones:")
-            self.print_name()
+            return self.print_name2()
         elif os == "android":
             for Phone in ManagePhones.list_phones:
                 if os in Phone.os:
                     sorted_list_Android.append(Phone)
             ManagePhones.current_list = sorted_list_Android[:]
-            print("Here are your filtered phones:")
-            self.print_name()
+            # print("Here are your filtered phones:")
+            return self.print_name2()
         else:
-            print("Phones with such OS are unavailable")
+            return "Phones with such OS are unavailable"
 
-    def filter_by_price(self):
+    def filter_by_price(self, price):
         sorted_list_by_price = []
-        a = int(input("Enter lower price range: "))
-        b = int(input("Enter upper price range: "))
-
-        for Phone in (y for y in ManagePhones.list_phones if a <= y.price <= b):
-            sorted_list_by_price.append(Phone)
-        ManagePhones.current_list = sorted_list_by_price[:]
-        print("Here are your filtered phones:")
-        self.print_name()
+        if price == None:
+            return "Input the price using this format (lowerBound upperBound) for example (2000 10000)"
+        else:
+            a, b = price.replace(" ", "").split(",")
+            for Phone in (y for y in ManagePhones.list_phones if a <= y.price <= b):
+                sorted_list_by_price.append(Phone)
+            ManagePhones.current_list = sorted_list_by_price[:]
+            return self.print_name2()
 
     def filter_by_brand(self):
         filtered_list_brand = []
@@ -204,10 +199,8 @@ class ManagePhones:
             return "How you'd like to sort the phones"
         elif specific == "name":
             return self.sort_by_name(nameP)
-        elif specific == "size":
-            return ["eWlrZXM=", "bG9s"]
         elif specific == "brand":
-            self.sort_by_brand()
+            return self.sort_by_brand(nameP)
         else:
             return "I'm sorry we cannot do this operation at this moment"
 
@@ -242,52 +235,69 @@ class ManagePhones:
             return f"Sorting by {sortingParameter} is unavailable"
             # return None
 
-    def sort_by_brand(self):
-        sortn = input("Enter whether to sort by name a-z or z-a: ")
+    def sort_by_brand(self, sortingParameter=None):
         sorted_list_by_name = sorted(
             ManagePhones.current_list, key=lambda Phone: Phone.brand.lower()
         )
+        if sortingParameter == None:
+            return "How you'd like to sort by name asc or dsc"
 
-        if sortn == "a-z":
+        if sortingParameter == "asc":
             ManagePhones.current_list = sorted_list_by_name[:]
+            return self.print_name2()
 
-        elif sortn == "z-a":
+        elif sortingParameter == "dsc":
             sorted_list_by_name.reverse()
             ManagePhones.current_list = sorted_list_by_name[:]
+            return self.print_name2()
         else:
-            print(f"Sorting {sortn} unavailable")
-            return None
+            return f"Sorting {sortingParameter} unavailable"
 
-        self.print_name()
+        # self.print_name()
 
     def recommend_phone(self):
+        b6encoded = []
         id = 0
         max = ManagePhones.current_list[id].recommend_score
         for i in range(1, len(ManagePhones.current_list)):
             if max < ManagePhones.current_list[i].recommend_score:
                 id = i
                 max = ManagePhones.current_list[id].recommend_score
-        print("Here is our recommendation:")
-        print(
-            f"""
-                ++++++++++++++++
-                id: {ManagePhones.current_list[id].id}
-                name:{ManagePhones.current_list[id].name}
-                brand:{ManagePhones.current_list[id].brand}
-                os:{ManagePhones.current_list[id].os}
-                price:{ManagePhones.current_list[id].price}
-                size:{ManagePhones.current_list[id].size}
-                color:{ManagePhones.current_list[id].color}
-                rating: {ManagePhones.current_list[id].recommend_score}/10
-                ++++++++++++++++
-                """
+
+        phonePic = ManagePhones.current_list[id].photo
+        res = (
+            "id: "
+            + str(ManagePhones.current_list[id].id)
+            + "\n"
+            + "name: "
+            + ManagePhones.current_list[id].name
+            + "\n"
+            + "brand: "
+            + ManagePhones.current_list[id].brand
+            + "\n"
+            + "os: "
+            + ManagePhones.current_list[id].os
+            + "\n"
+            + "price: "
+            + str(ManagePhones.current_list[id].price)
+            + "\n"
+            + "size: "
+            + str(ManagePhones.current_list[id].size)
+            + "\n"
+            + "color: "
+            + ManagePhones.current_list[id].color
+            + "\n"
+            + "rating: "
+            + str(ManagePhones.current_list[id].recommend_score)
+            + " / 10"
         )
+        responseB6en = b6.b64encode(res.encode("utf-8"))
+        return responseB6en, phonePic
 
     def check_phone_info(self, id):
         stock = "not in stock"
         if self.check_if_stock(id):
             stock = "In stock"
-
         for phone in ManagePhones.list_phones:
             # print(type(phone))
             if phone.id == id:
@@ -418,12 +428,12 @@ class ManagePhones:
 """
 TESTING
 """
-
 # mp = ManagePhones()
+# res = mp.recommend_phone()
+# print("b4: ", res)
+# print((b6.b64decode(res[0])).decode("utf-8"))
 # # mp.print_name()
 # mp.filter('os')
 # mp.recommend_phone()
-
-
 # mp.reinit()
 # mp.print_name()

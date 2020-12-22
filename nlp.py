@@ -42,18 +42,22 @@ class TextInput:
             word
             for word in text_tokens
             if (not word in stopwords.words())
-            or word in ["os", "where", "when", "name"]
+            or word in ["os", "where", "when", "name", "brand", "ios"]
         ]
         temp = []
+        dontStem = ["ios"]
         for word in tokens_without_sw:
-            temp.append(porter.stem(word))
+            if word in dontStem:
+                temp.append(word)
+            else:
+                temp.append(porter.stem(word))
         self.text = temp
 
 
 """
 ==================================TESTING========================================
 """
-# message = TextInput("i want to sort by name")
+# message = TextInput("i want to filter the phones by price from 99 to 100")
 # message.text_initiation()
 # print(message.text)
 """

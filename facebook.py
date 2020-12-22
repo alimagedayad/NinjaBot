@@ -21,7 +21,7 @@ ACCESS_TOKEN = "EAAE9kzEJZBnQBAA0BaBtuP89eZAZCyZBL54IcgKg67MlZCkkhFLwNk5cvmZBlV8
 VERIFY_TOKEN = "youssef"
 bot = Bot(ACCESS_TOKEN)
 
-bannedUsers = []
+bannedUsers = [""]
 
 
 @app.route("/webhook", methods=["GET", "POST"])
@@ -76,11 +76,16 @@ def receive_message():
                             elif intent1 != None and intent2 == None:
                                 if intent1 == "greeting":
                                     res = detect_purpose.greeting(intent1)
-                                if intent1 == "sort":
+                                    send_message(recipient_id, res)
+                                elif intent1 == "sort":
                                     res = manage.sort()
+                                    send_message(recipient_id, res)
                                 elif intent1 == "filter":
                                     res = manage.filter()
-                                send_message(recipient_id, res)
+                                    send_message(recipient_id, res)
+                                elif intent1 == "recommendation":
+                                    res = manage.recommend_phone()
+                                    sendRecommendation(res[0], res[1], recipient_id)
 
                             elif intent1 != None and intent2 != None:
                                 limit = 9
@@ -93,21 +98,15 @@ def receive_message():
                                     # elif intent2 == "name":
                                     #     res = manage.sort(intent2)
                                 elif intent1 == "filter":
-                                    pass
+                                    res = manage.filter(intent2)
+                                    print("returned filtered: ", res)
+
                                 if len(res) > 0 and type(res) is list:
                                     sendListv2(res, limit, recipient_id)
                                 elif type(res) is str:
                                     send_message(recipient_id, res)
                                 else:
                                     print("typeof: ", type(res))
-                                    # for index, item in enumerate(res):
-                                    #     if index <= limit:
-                                    #         text = b6.b64decode(item)
-                                    #         send_message(
-                                    #             recipient_id,
-                                    #             f"i: {index}\n{text.decode('utf-8')}",
-                                    #         )
-                                    # return "success"
                             elif intent1 is None and i1 is not None:
                                 res = []
                                 checkEntities = detect_purpose.checkEntities(rep)
@@ -116,16 +115,20 @@ def receive_message():
                                     if checkEntities[i][-1] == 1:
                                         chosenEntity = i
                                 print(chosenEntity)
+                                p = 0
                                 if i1 == "sort":
-                                    p = 0
-                                    if i2 == "name":
+                                    if i2 == "name" or i2 == "brand":
                                         res = manage.sort(i2, nameP=chosenEntity)
-                                    elif chosenEntity == "name":
-                                        res = manage.sort("name")
+                                    elif (
+                                        chosenEntity == "name"
+                                        or chosenEntity == "brand"
+                                    ):
+                                        res = manage.sort(chosenEntity)
                                         chat.setI1("sort")
-                                        chat.setI2("name")
+                                        chat.setI2(chosenEntity)
                                         p = 1
                                     else:
+                                        print("res: ", chosenEntity)
                                         res = manage.sort(chosenEntity)
                                     if len(res) > 0 and type(res) is list:
                                         sendListv2(res, 10, recipient_id)
@@ -135,8 +138,24 @@ def receive_message():
                                         print("typeof: ", type(res))
 
                                 elif i1 == "filter":
-                                    print("YOLO")
-                                pass
+                                    if i2 == "os" or i2 == "price":
+                                        res = manage.filter(i2, os=chosenEntity)
+                                    elif chosenEntity == "os":
+                                        res = manage.filter(chosenEntity)
+                                        chat.setI1("filter")
+                                        chat.setI2(chosenEntity)
+                                        p = 1
+                                    elif chosenEntity == "price":
+                                        res = manage.filter(chosenEntity)
+                                        chat.setI1("filter")
+                                        chat.setI2(chosenEntity)
+                                        p = 1
+                                    if len(res) > 0 and type(res) is list:
+                                        sendListv2(res, 10, recipient_id)
+                                    elif type(res) is str:
+                                        send_message(recipient_id, res)
+                                    else:
+                                        print("typeof: ", type(res))
 
                             # elif i1 == 'sort' and intent1 == None:
                             #     secAttr = ''.join(rep)
@@ -281,21 +300,6 @@ def send_buttons(recipient_id, elements):
                     "elements": elements,
                 },
             }
-            # "title": "Welcome!",
-            # "image_url": "https://incredideals.net/wp-content/uploads/2019/09/iphone11-select-2019-family.jpeg",
-            # "subtitle": "We have the right hat for everyone.",
-            # "default_action": {
-            #     "type": "web_url",
-            #     "url": "https://petersfancybrownhats.com/view?item=103",
-            #     "webview_height_ratio": "tall",
-            # },
-            # "buttons": [
-            #     {
-            #         "type": "web_url",
-            #         "url": "https://petersfancybrownhats.com",
-            #         "title": "View Website",
-            #     },
-            # ],
         },
     )
     return "status"
@@ -304,11 +308,11 @@ def send_buttons(recipient_id, elements):
 def phoneElementsCreate(
     name,
     body,
-    pic="https://incredideals.net/wp-content/uploads/2019/09/iphone11-select-2019-family.jpeg",
+    photo="https://incredideals.net/wp-content/uploads/2019/09/iphone11-select-2019-family.jpeg",
 ):
     return {
         "title": name,
-        "image_url": pic,
+        "image_url": photo,
         "subtitle": body,
     }
 
@@ -333,11 +337,24 @@ def sendList(list, limit, recipient_id):
     return "success"
 
 
+def sendRecommendation(encodedText, pic, recipient_id):
+    decodedText = b6.b64decode(encodedText).decode("utf-8")
+    send_message(recipient_id, "Here's our recommendation 🥁🥁🥁")
+    sendPhoto(recipient_id, pic)
+    send_message(recipient_id, decodedText)
+    return "success"
+
+
+def sendPhoto(recipient_id, image_url):
+    bot.send_image_url(recipient_id, image_url)
+    return "success"
+
+
 def sendListv2(list, limit, recipient_id):
     elements = []
     for index, item in enumerate(list):
         if index < limit:
-            elements.append(phoneElementsCreate(item[0], f"price: {item[1]}"))
+            elements.append(phoneElementsCreate(item[0], f"{item[1]}$", photo=item[2]))
     if len(elements) > 0:
         send_buttons(recipient_id, elements)
     return "success"

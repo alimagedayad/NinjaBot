@@ -66,6 +66,7 @@ class ManageIntent:
     def checkEntities(self, cleanList):
         priority = 1
         checkedEntities = {}
+        print("cleanList: ", cleanList)
         intentObj = ManageIntent.intentObj.get_all()
         for item in cleanList:
             for item2 in intentObj:
@@ -76,7 +77,15 @@ class ManageIntent:
                         else:
                             checkedEntities[str.lower(item)] = [True, priority]
                             priority += 1
-        return checkedEntities
+        if checkedEntities == None:
+            try:
+                ints = [int(i) for i in cleanList]
+                return ints
+            except Exception as e:
+                print("e: ", e)
+                return checkedEntities
+        else:
+            return checkedEntities
 
     def get_response(self, cleanList, client="user", recipient_id="123"):
         if client == "messenger":
@@ -95,7 +104,6 @@ class ManageIntent:
         if intent1 == "sort":
             manage = MP.ManagePhones()
             manage.sort(intent2, recipient_id=recipient_id)
-
         elif intent1 == "filter":
             manage = MP.ManagePhones()
             manage.filter(intent2)
@@ -113,8 +121,6 @@ class ManageIntent:
 """
 TESTING
 """
-# demo = ManageIntent()
-# # inp = ["os","price","ffff"]
-# # demo.checkEntities(inp)
-# x = demo.greeting("greeting")
-# print(x)
+demo = ManageIntent()
+inp = ["324", "123"]
+print(demo.checkEntities(inp))
