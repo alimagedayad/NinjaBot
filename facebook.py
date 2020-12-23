@@ -88,6 +88,7 @@ def receive_message():
                                     sendRecommendation(res[0], res[1], recipient_id)
 
                             elif intent1 != None and intent2 != None:
+                                print("line: 91 executed")
                                 limit = 9
                                 if intent1 == "sort":
                                     res = manage.sort(intent2)
@@ -98,7 +99,7 @@ def receive_message():
                                     # elif intent2 == "name":
                                     #     res = manage.sort(intent2)
                                 elif intent1 == "filter":
-                                    res = manage.filter(intent2)
+                                    res = manage.filter(specific=intent2)
                                     print("returned filtered: ", res)
 
                                 if len(res) > 0 and type(res) is list:
@@ -107,18 +108,35 @@ def receive_message():
                                     send_message(recipient_id, res)
                                 else:
                                     print("typeof: ", type(res))
+
                             elif intent1 is None and i1 is not None:
+                                print("line: 113 executed i1,i2: ", i1, i2)
                                 res = []
                                 checkEntities = detect_purpose.checkEntities(rep)
+                                print(
+                                    "line: 113 executed checkEntities: ", checkEntities
+                                )
                                 chosenEntity = None
-                                for i in checkEntities:
-                                    if checkEntities[i][-1] == 1:
-                                        chosenEntity = i
-                                print(chosenEntity)
+                                try:
+                                    for i in checkEntities:
+                                        if checkEntities[i][-1] == 1:
+                                            chosenEntity = i
+                                except:
+                                    print("1st expect: ", checkEntities)
+                                    try:
+                                        ints = [
+                                            int(i) for i in checkEntities.split(",")
+                                        ]
+                                        chosenEntity = checkEntities
+                                        print("nested try: check", chosenEntity)
+                                    except ValueError:
+                                        print("nested except: check", chosenEntity)
+                                        res = "what the fuck are you doing bro"
                                 p = 0
                                 if i1 == "sort":
                                     if i2 == "name" or i2 == "brand":
                                         res = manage.sort(i2, nameP=chosenEntity)
+
                                     elif (
                                         chosenEntity == "name"
                                         or chosenEntity == "brand"
@@ -138,18 +156,40 @@ def receive_message():
                                         print("typeof: ", type(res))
 
                                 elif i1 == "filter":
-                                    if i2 == "os" or i2 == "price":
-                                        res = manage.filter(i2, os=chosenEntity)
+                                    if (
+                                        i2 == "os"
+                                        or i2 == "price"
+                                        or i2 == "size"
+                                        or i2 == "ram"
+                                    ):
+                                        res = manage.filter(
+                                            i2, inputSpecific=chosenEntity
+                                        )
+
                                     elif chosenEntity == "os":
                                         res = manage.filter(chosenEntity)
                                         chat.setI1("filter")
                                         chat.setI2(chosenEntity)
                                         p = 1
+
+                                    elif chosenEntity == "size":
+                                        res = manage.filter(chosenEntity)
+                                        chat.setI1("filter")
+                                        chat.setI2(chosenEntity)
+                                        p = 1
+
+                                    elif chosenEntity == "ram":
+                                        res = manage.filter(chosenEntity)
+                                        chat.setI1("filter")
+                                        chat.setI2(chosenEntity)
+                                        p = 1
+
                                     elif chosenEntity == "price":
                                         res = manage.filter(chosenEntity)
                                         chat.setI1("filter")
                                         chat.setI2(chosenEntity)
                                         p = 1
+
                                     if len(res) > 0 and type(res) is list:
                                         sendListv2(res, 10, recipient_id)
                                     elif type(res) is str:
@@ -352,13 +392,21 @@ def sendPhoto(recipient_id, image_url):
 
 def sendListv2(list, limit, recipient_id):
     elements = []
+    print(limit)
     for index, item in enumerate(list):
         if index < limit:
-            elements.append(phoneElementsCreate(item[0], f"{item[1]}$", photo=item[2]))
+            elements.append(
+                phoneElementsCreate(
+                    item[0],
+                    f"RAM:{item[2]}GB - {item[3]}GB\n{item[1]}$",
+                    photo=item[-1],
+                )
+            )
     if len(elements) > 0:
+        print("elements: ", elements)
         send_buttons(recipient_id, elements)
     return "success"
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)

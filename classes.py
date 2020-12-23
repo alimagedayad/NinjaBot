@@ -14,6 +14,7 @@ class Phone:
         name=None,
         brand=None,
         os=None,
+        ram=None,
         price=None,
         size=None,
         color=None,
@@ -24,6 +25,7 @@ class Phone:
         self.name = name
         self.brand = brand
         self.os = os
+        self.ram = ram
         self.price = price
         self.size = size
         self.color = color
@@ -35,12 +37,12 @@ class Phone:
         self.name = Phone.db.memory[phone_num]["name"]
         self.brand = Phone.db.memory[phone_num]["brand"]
         self.os = Phone.db.memory[phone_num]["os"]
+        self.ram = Phone.db.memory[phone_num]["ram"]
         self.price = Phone.db.memory[phone_num]["price"]
         self.size = Phone.db.memory[phone_num]["size"]
         self.color = Phone.db.memory[phone_num]["color"]
         self.photo = Phone.db.memory[phone_num]["photo"]
         self.recommend_score = Phone.db.memory[phone_num]["recommend"]
-
         return self
 
     def get_number_of_phones(self):

@@ -63,6 +63,8 @@ class ManagePhones:
                 [
                     ManagePhones.current_list[i].name,
                     ManagePhones.current_list[i].price,
+                    ManagePhones.current_list[i].ram,
+                    ManagePhones.current_list[i].size,
                     ManagePhones.current_list[i].photo,
                 ]
             )
@@ -98,24 +100,23 @@ class ManagePhones:
     def reinit(self):
         ManagePhones.current_list = ManagePhones.list_phones[:]
 
-    def filter(
-        self, specific=None, os=None, price=None, brand=None, size=None, ram=None
-    ):
+    def filter(self, specific=None, inputSpecific=None):
         if specific == None:
             return "How would you like to filter the phones? \n"
         if specific == "os":
-            return self.filter_by_OS(os)
+            return self.filter_by_OS(inputSpecific)
         elif specific == "price":
-            return self.filter_by_price(os)
+            return self.filter_by_price(inputSpecific)
         elif specific == "brand":
-            return self.filter_by_brand(brand)
+            return self.filter_by_brand(inputSpecific)
         elif specific == "size":
-            return self.filter_by_size(size)
+            return self.filter_by_size(inputSpecific)
         elif specific == "ram":
-            return self.filter_by_ram(ram)
+            return self.filter_by_ram(inputSpecific)
         else:
-            print("I'm sorry we cannot do this operation at this moment")
+            return "I'm sorry we cannot do this operation at this moment"
 
+    # Done
     def filter_by_OS(self, os):
         print("filter os: ", os)
         sorted_list_iOS = []
@@ -139,17 +140,21 @@ class ManagePhones:
         else:
             return "Phones with such OS are unavailable"
 
+    # Done
     def filter_by_price(self, price):
         sorted_list_by_price = []
         if price == None:
             return "Input the price using this format (lowerBound upperBound) for example (2000 10000)"
         else:
-            a, b = price.replace(" ", "").split(",")
-            for Phone in (y for y in ManagePhones.list_phones if a <= y.price <= b):
+            a, b = price.split(",")
+            for Phone in (
+                y for y in ManagePhones.list_phones if int(a) <= y.price <= int(b)
+            ):
                 sorted_list_by_price.append(Phone)
             ManagePhones.current_list = sorted_list_by_price[:]
             return self.print_name2()
 
+    # Done
     def filter_by_brand(self):
         filtered_list_brand = []
         brand = input("Enter desired brand: ").lower()
@@ -164,33 +169,36 @@ class ManagePhones:
         print("Here are your filtered phones:")
         self.print_name()
 
-    def filter_by_size(self):
+    def filter_by_size(self, size):
         filtered_list_size = []
-        s = int(input("Enter lower size range: "))
-        d = int(input("Enter upper size range: "))
+        if size == None:
+            return "Input the size using this format (lowerBound upperBound) for example (8 16)"
+        else:
+            a, b = size.split(",")
+            for Phone in (
+                y for y in ManagePhones.list_phones if int(a) <= y.size <= int(b)
+            ):
+                filtered_list_size.append(Phone)
+            if len(filtered_list_size) == 0:
+                return "Sorry. We do not have phones with this specification..."
+            ManagePhones.current_list = filtered_list_size[:]
+            return self.print_name2()
 
-        for Phone in (y for y in ManagePhones.list_phones if s <= y.size <= d):
-            filtered_list_size.append(Phone)
-        if len(filtered_list_size) == 0:
-            print("Sorry. We do not have phones with this specifiction...")
-            return None
-        ManagePhones.current_list = filtered_list_size[:]
-        print("Here are your filtered phones:")
-        self.print_name()
-
-    def filter_by_ram(self):
+    def filter_by_ram(self, ram):
         filtered_list_ram = []
-        r = int(input("Enter lower ram range: "))
-        f = int(input("Enter upper ram range: "))
-
-        for Phone in (y for y in ManagePhones.list_phones if r <= y.ram <= f):
-            filtered_list_ram.append(Phone)
-        if len(filtered_list_ram) == 0:
-            print("Sorry. We do not have phones with this specifiction...")
-            return None
-        ManagePhones.current_list = filtered_list_ram[:]
-        print("Here are your filtered phones:")
-        self.print_name()
+        if ram == None:
+            return "Input the ram using this format (lowerBound upperBound) for example (8 16)"
+        else:
+            a, b = ram.split(",")
+            for Phone in (
+                y for y in ManagePhones.list_phones if int(a) <= y.ram <= int(b)
+            ):
+                filtered_list_ram.append(Phone)
+            if len(filtered_list_ram) == 0:
+                return "Sorry. We do not have phones with this specifiction..."
+            ManagePhones.current_list = filtered_list_ram[:]
+            print("Here are your filtered phones:")
+            return self.print_name2()
 
     def sort(self, specific=None, nameP=None):
         if specific == "price":

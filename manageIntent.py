@@ -66,7 +66,6 @@ class ManageIntent:
     def checkEntities(self, cleanList):
         priority = 1
         checkedEntities = {}
-        print("cleanList: ", cleanList)
         intentObj = ManageIntent.intentObj.get_all()
         for item in cleanList:
             for item2 in intentObj:
@@ -77,13 +76,16 @@ class ManageIntent:
                         else:
                             checkedEntities[str.lower(item)] = [True, priority]
                             priority += 1
-        if checkedEntities == None:
+
+        if checkedEntities == {}:
             try:
+                print("cleanList =", cleanList)
                 ints = [int(i) for i in cleanList]
-                return ints
-            except Exception as e:
-                print("e: ", e)
-                return checkedEntities
+                ints.sort()
+                strInts = [str(i) for i in ints]
+                return ",".join(strInts)
+            except ValueError:
+                return {}
         else:
             return checkedEntities
 
@@ -121,6 +123,6 @@ class ManageIntent:
 """
 TESTING
 """
-demo = ManageIntent()
-inp = ["324", "123"]
-print(demo.checkEntities(inp))
+# demo = ManageIntent()
+# inp = ["200", "0"]
+# print(demo.checkEntities(inp))

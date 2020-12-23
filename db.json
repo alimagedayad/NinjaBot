@@ -479,5 +479,31 @@
         "stock": 12,
         "ram": 12,
         "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg"
+    },
+    {
+        "id": 38,
+        "name": "iGeorge",
+        "brand": "samsung",
+        "os": "android 10",
+        "price": 1499,
+        "size": 8,
+        "color": "cosmic grey",
+        "recommend": 4,
+        "stock": 12,
+        "ram": 12,
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg"
+    },
+    {
+        "id": 39,
+        "name": "iAli",
+        "brand": "samsung",
+        "os": "android 10",
+        "price": 1499,
+        "size": 15,
+        "color": "cosmic grey",
+        "recommend": 4,
+        "stock": 12,
+        "ram": 12,
+        "photo": "https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s20/s20-fe-buy/carousel-kv/009_sku_kv/mo/S20-Ultra_Gray_SKUimage.jpg"
     }
 ]

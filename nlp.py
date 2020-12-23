@@ -57,7 +57,7 @@ class TextInput:
 """
 ==================================TESTING========================================
 """
-# message = TextInput("i want to filter the phones by price from 99 to 100")
+# message = TextInput("(200 30000)")
 # message.text_initiation()
 # print(message.text)
 """
