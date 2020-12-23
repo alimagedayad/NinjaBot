@@ -79,7 +79,6 @@ class ManageIntent:
 
         if checkedEntities == {}:
             try:
-                print("cleanList =", cleanList)
                 ints = [int(i) for i in cleanList]
                 ints.sort()
                 strInts = [str(i) for i in ints]
@@ -123,5 +122,5 @@ class ManageIntent:
 TESTING
 """
 # demo = ManageIntent()
-# inp = ["200", "0"]
+# inp = ["I", "want", "to", "sort", "the", "phones", "os", "price"]
 # print(demo.checkEntities(inp))

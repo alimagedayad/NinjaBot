@@ -1,4 +1,4 @@
-import os, random, json
+import os, random, json, sys
 from pymessenger.bot import Bot
 from flask import Flask, request
 from nlp import TextInput as TI
@@ -67,8 +67,9 @@ def receive_message():
                                 insult_count += 1
                                 break
                             else:
+                                print("rep: ", rep)
                                 detect_purpose = MI.ManageIntent()
-                                detect_purpose.get_response(rep)
+                                # detect_purpose.get_response(rep)
 
                             intent1, intent2 = detect_purpose.extractIntents(rep)
                             manage = MP.ManagePhones()
@@ -141,12 +142,11 @@ def receive_message():
                                         print("nested try: check", chosenEntity)
                                     except ValueError:
                                         print("nested except: check", chosenEntity)
-                                        res = "what the fuck are you doing bro"
+                                        res = "Error!"
                                 p = 0
                                 if i1 == "sort":
                                     if i2 == "name" or i2 == "brand":
                                         res = manage.sort(i2, nameP=chosenEntity)
-
                                     elif (
                                         chosenEntity == "name"
                                         or chosenEntity == "brand"
@@ -292,6 +292,9 @@ def receive_message():
         # print("terminal tuple: ", chat.getInfo())
     except Exception as e:
         print("Exception: ", e)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print(exc_type, fname, exc_tb.tb_lineno)
     return "Message Processed"
 
 

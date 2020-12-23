@@ -120,7 +120,6 @@ class ManagePhones:
 
     # Done
     def filter_by_OS(self, os):
-        print("filter os: ", os)
         sorted_list_iOS = []
         sorted_list_Android = []
 
@@ -205,7 +204,7 @@ class ManagePhones:
         if specific == "price":
             return self.sort_price()
         elif specific == None:
-            return "How you'd like to sort the phones (name, price and brand)"
+            return "How you'd like to sort the phones (name, price and brand)?"
         elif specific == "name":
             return self.sort_by_name(nameP)
         elif specific == "brand":
