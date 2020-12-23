@@ -1,5 +1,7 @@
 from classes import Phone
 import base64 as b6
+from datetime import date
+
 
 """
 INFORMATION:
@@ -102,7 +104,7 @@ class ManagePhones:
 
     def filter(self, specific=None, inputSpecific=None):
         if specific == None:
-            return "How would you like to filter the phones? \n"
+            return "How would you like to filter the phones? (os, price, brand, size and ram) \n"
         if specific == "os":
             return self.filter_by_OS(inputSpecific)
         elif specific == "price":
@@ -155,19 +157,18 @@ class ManagePhones:
             return self.print_name2()
 
     # Done
-    def filter_by_brand(self):
+    def filter_by_brand(self, brand):
         filtered_list_brand = []
-        brand = input("Enter desired brand: ").lower()
-        print("Brand: ", brand)
-        for Phone in ManagePhones.list_phones:
-            if brand in Phone.brand:
-                filtered_list_brand.append(Phone)
-        if len(filtered_list_brand) == 0:
-            print("This brand is not available in this store")
-            return None
-        ManagePhones.current_list = filtered_list_brand[:]
-        print("Here are your filtered phones:")
-        self.print_name()
+        if brand == None:
+            return "Input the brand (samsung, apple)..."
+        else:
+            for Phone in ManagePhones.list_phones:
+                if brand in Phone.brand:
+                    filtered_list_brand.append(Phone)
+            if len(filtered_list_brand) == 0:
+                return "This brand is not available in this store"
+            ManagePhones.current_list = filtered_list_brand[:]
+            return self.print_name2()
 
     def filter_by_size(self, size):
         filtered_list_size = []
@@ -204,7 +205,7 @@ class ManagePhones:
         if specific == "price":
             return self.sort_price()
         elif specific == None:
-            return "How you'd like to sort the phones"
+            return "How you'd like to sort the phones (name, price and brand)"
         elif specific == "name":
             return self.sort_by_name(nameP)
         elif specific == "brand":

@@ -99,7 +99,6 @@ class ManageIntent:
         for item in ManageIntent.intentObj.get_all():
             if item["entryPoint"] == intent1 and len(item["responses"]) != 0:
                 choice = random.choice(item["responses"])
-                print(choice)
                 break
         if intent1 == "":
             return "I didn't quit get that. Please try again."

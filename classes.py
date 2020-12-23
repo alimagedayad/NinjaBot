@@ -48,6 +48,14 @@ class Phone:
     def get_number_of_phones(self):
         return len(Phone.db.memory)
 
+    def order_phone(self, text):
+        order = dbHandler()
+        order.write_order(text)
+
+    def update_db(self, new_list):
+        update = dbHandler()
+        update.write_json("db.json", new_list)
+
 
 """
 TESTING

@@ -22,11 +22,12 @@ VERIFY_TOKEN = "youssef"
 bot = Bot(ACCESS_TOKEN)
 
 bannedUsers = [""]
+insult_count = 0
 
 
 @app.route("/webhook", methods=["GET", "POST"])
 def receive_message():
-    global msg, flag, i1, i2, counter, p, firstRun
+    global msg, flag, i1, i2, counter, p, firstRun, insult_count
     responseComplete = False
     try:
         if request.method == "GET":
@@ -52,14 +53,23 @@ def receive_message():
                             userMessage = message["message"].get("text")
                             # send_buttons(recipient_id, "text", ["1", "2"])
                             msg, flag, i1, i2 = chat.getInfo()
-                            send_message(
-                                recipient_id,
-                                f"i1: {i1} \ni2: {i2} \nflag: {flag} \nmsg: {msg}",
-                            )
+                            # send_message(
+                            #     recipient_id,
+                            #     f"i1: {i1} \ni2: {i2} \nflag: {flag} \nmsg: {msg}",
+                            # )
                             rep = TI(userMessage)
                             rep.text_initiation()
                             rep = list(set(rep.text))
+
                             detect_purpose = MI.ManageIntent()
+
+                            if check_insult(rep, insult_count, recipient_id):
+                                insult_count += 1
+                                break
+                            else:
+                                detect_purpose = MI.ManageIntent()
+                                detect_purpose.get_response(rep)
+
                             intent1, intent2 = detect_purpose.extractIntents(rep)
                             manage = MP.ManagePhones()
 
@@ -88,7 +98,7 @@ def receive_message():
                                     sendRecommendation(res[0], res[1], recipient_id)
 
                             elif intent1 != None and intent2 != None:
-                                print("line: 91 executed")
+                                # print("line: 91 executed")
                                 limit = 9
                                 if intent1 == "sort":
                                     res = manage.sort(intent2)
@@ -161,30 +171,12 @@ def receive_message():
                                         or i2 == "price"
                                         or i2 == "size"
                                         or i2 == "ram"
+                                        or i2 == "brand"
                                     ):
                                         res = manage.filter(
                                             i2, inputSpecific=chosenEntity
                                         )
-
-                                    elif chosenEntity == "os":
-                                        res = manage.filter(chosenEntity)
-                                        chat.setI1("filter")
-                                        chat.setI2(chosenEntity)
-                                        p = 1
-
-                                    elif chosenEntity == "size":
-                                        res = manage.filter(chosenEntity)
-                                        chat.setI1("filter")
-                                        chat.setI2(chosenEntity)
-                                        p = 1
-
-                                    elif chosenEntity == "ram":
-                                        res = manage.filter(chosenEntity)
-                                        chat.setI1("filter")
-                                        chat.setI2(chosenEntity)
-                                        p = 1
-
-                                    elif chosenEntity == "price":
+                                    else:
                                         res = manage.filter(chosenEntity)
                                         chat.setI1("filter")
                                         chat.setI2(chosenEntity)
@@ -390,6 +382,34 @@ def sendPhoto(recipient_id, image_url):
     return "success"
 
 
+def check_insult(cleanlist, count, recipient_id):
+    global bannedUsers
+    cuss = [
+        "fuck",
+        "shit",
+        "asshole",
+        "cunt",
+        "suck",
+        "damn",
+        "cock",
+        "dick",
+        "whore",
+        "pussy",
+    ]
+    for word in cleanlist:
+        if word in cuss:
+            if count == 2:
+                bannedUsers.append(recipient_id)
+                send_message(recipient_id, "The chatbot will close!!")
+            else:
+                send_message(
+                    recipient_id,
+                    f"This type of language is intolerable. Please refrain from using it again. Do so again {3 - count - 1} times and the bot will close",
+                )
+            return True
+    return False
+
+
 def sendListv2(list, limit, recipient_id):
     elements = []
     print(limit)
@@ -409,4 +429,4 @@ def sendListv2(list, limit, recipient_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, threaded=True)
+    app.run(debug=True)

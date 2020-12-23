@@ -32,26 +32,51 @@ class ChatBot:
     def start_bot(self):
         prom = ""
         rep = TI(prom)
-        while True:
+        insult_count = 0
+        while insult_count <= 2:
             prom = input("-> ")
             if prom == "quit":
                 break
             rep = TI(prom)
             rep.text_initiation()
-            print("b4 rep: ", rep)
             rep = rep.text
-            print("after rep: ", rep)
-            detect_purpose = MI.ManageIntent()
-            detect_purpose.get_response(rep)
+            if self.check_insult(rep, insult_count):
+                insult_count += 1
+            else:
+                detect_purpose = MI.ManageIntent()
+                detect_purpose.get_response(rep)
 
     def bot_end(self):
         print("Goodbye!!!")
+
+    def check_insult(self, cleanlist, count):
+        cuss = [
+            "fuck",
+            "shit",
+            "asshole",
+            "cunt",
+            "suck",
+            "damn",
+            "cock",
+            "dick",
+            "whore",
+            "pussy",
+        ]
+        for word in cleanlist:
+            if word in cuss:
+                if count == 2:
+                    print("The chatbot will close!!")
+                else:
+                    print(
+                        f"This type of language is intolerable. Please refrain from using it again. Do so again {3 - count - 1} times and the bot will close"
+                    )
+                return True
+        return False
 
 
 """
 CHATBOT NINJA
 """
-
 
 chat = ChatBot()
 chat.init_bot()

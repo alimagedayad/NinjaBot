@@ -26,7 +26,7 @@
     {
         "entryPoint": "filter",
         "patterns": ["filter", "proposition"],
-        "entities": ["price", "os","size","brand","ram", "ios", "android"],
+        "entities": ["price", "os","size","brand","ram", "ios", "android", "samsung", "apple"],
         "responses": ["please wait while the filtering is processing..."]
     },
     {

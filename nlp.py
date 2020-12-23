@@ -45,7 +45,7 @@ class TextInput:
             or word in ["os", "where", "when", "name", "brand", "ios"]
         ]
         temp = []
-        dontStem = ["ios"]
+        dontStem = ["ios", "apple"]
         for word in tokens_without_sw:
             if word in dontStem:
                 temp.append(word)
