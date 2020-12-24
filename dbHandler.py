@@ -1,11 +1,14 @@
 import json
-
-
+import os
+cwd = os.path.dirname(os.path.realpath(__file__))
+print(cwd)
 class dbHandler:
     def __init__(self):
         self.memory = None
+        self.filename = None
 
     def read(self, json_file):
+        self.filename = cwd + "/" + json_file
         with open(json_file) as jF:
             self.memory = json.load(jF)
         return self.memory
