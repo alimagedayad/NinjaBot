@@ -1,6 +1,7 @@
 from nltk.corpus import stopwords
 import string
 from nltk.stem import PorterStemmer
+import pytest
 
 porter = PorterStemmer()
 
@@ -57,7 +58,13 @@ class TextInput:
 """
 ==================================TESTING========================================
 """
-# message = TextInput("(200 30000)")
+# def test_nlp_number():
+#     a = TextInput(123)
+#     a.text_initiation()
+#     assert a.text == ["123"]
+
+
+# message = TextInput("$%$")
 # message.text_initiation()
 # print(message.text)
 """
