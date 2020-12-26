@@ -130,4 +130,6 @@ dmypy.json
 
 .idea/
 
+db1.json
+*.backup.py
 *.txt
